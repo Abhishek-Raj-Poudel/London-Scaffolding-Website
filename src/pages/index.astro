@@ -1,10 +1,6 @@
 ---
 import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import {Button} from '@/components/ui/button.tsx';
 ---
 
 <html lang="en">
@@ -19,8 +15,8 @@ import Button from '../components/Button.astro';
 
 	<body>
 		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+			<Button className=' rounded-full  shadow-none! px-5! py-5! border-primary border-2 text-primary font-bold' variant={'outline'}>Tailwind Button in Astro!</Button>
+			<Button className='bg-primary text-white' variant={'outline'}>Tailwind Button in Astro!</Button>
 		</div>
 	</body>
 </html>
