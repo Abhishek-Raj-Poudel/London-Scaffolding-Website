@@ -1,22 +1,282 @@
 ---
-import '../styles/global.css';
-import {Button} from '@/components/ui/button.tsx';
+import Main from "../layouts/main.astro";
+import { getCollection } from "astro:content";
+import { ServiceCarousel } from "@/components/ServiceCarousel";
+import { TrustBar } from "@/components/TrustBar";
+import { ProjectSlider } from "@/components/ProjectSlider";
+import { HomeFAQ } from "@/components/HomeFAQ";
+import { FAQ } from "@/components/FAQ";
+import { CTA } from "@/components/CTA";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+const services = await getCollection("services");
+const formattedServices = services.map((s) => ({
+  title: s.data.title,
+  description: s.data.description,
+  slug: s.slug,
+}));
+
+const areas = await getCollection("areas");
+
+const testimonials = [
+  {
+    name: "Michael Stevens",
+    role: "Property Developer",
+    content:
+      "The team at London Scaffolding is incredibly professional. Their speed of installation and attention to safety protocols on our multi-unit project was exemplary.",
+    rating: 5,
+  },
+  {
+    name: "Sarah Jenkins",
+    role: "Homeowner",
+    content:
+      "Reliable, clean, and polite. They set up the scaffold for our loft conversion quickly and were very careful with our garden. Highly recommended for domestic work.",
+    rating: 5,
+  },
+  {
+    name: "Robert Hughes",
+    role: "Site Manager",
+    content:
+      "Competitively priced and highly skilled. They managed a complex tube and fitting project for us in Central London without a single hitch. Great communication.",
+    rating: 5,
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+<Main content={{ title: "Scaffolding Company in London | London Scaffolding" }}>
+  {/* Hero Section */}
+  <section
+    class="bg-primary text-white pt-20 border-b border-white/10 overflow-visible"
+  >
+    <div class="relative wrapper">
+      <div class="max-w-4xl flex flex-col gap-6">
+        <h1 class="typo-5xl leading-tight">
+          Professional Scaffolding <br /> Company in London
+        </h1>
+        <p class="typo-xl text-white/90 leading-relaxed max-w-2xl">
+          We are a premier scaffolding company based in South West London with
+          over 10 years of experience. Providing safe, reliable, and compliant
+          access solutions to domestic and commercial customers city-wide.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a
+            href="#quote"
+            class="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-white/90 transition-all shadow-lg hover:scale-105"
+          >
+            Get Instant Quote
+          </a>
+          <a
+            href="tel:0208XXXXXXX"
+            class="bg-primary/20 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all"
+          >
+            Call Us Today
+          </a>
+        </div>
+      </div>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button className=' rounded-full  shadow-none! px-5! py-5! border-primary border-2 text-primary font-bold' variant={'outline'}>Tailwind Button in Astro!</Button>
-			<Button className='bg-primary text-white' variant={'outline'}>Tailwind Button in Astro!</Button>
-		</div>
-	</body>
-</html>
+      <div class="mt-20 -mb-16">
+        <TrustBar client:load />
+      </div>
+
+      <div
+        class="mt-16 -mb-80 rounded-3xl overflow-hidden border-white/10 w-full shadow-2xl relative"
+      >
+        <img
+          src="/hero-scaffolding.png"
+          alt="Scaffolding Company in London"
+          class="w-full h-auto object-cover max-h-[600px] hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* Services Section */}
+  <section class="pt-96 pb-20 overflow-x-hidden bg-background">
+    <div class="wrapper">
+      <div class="max-w-4xl flex flex-col gap-6 mb-12">
+        <h2 class="typo-4xl">Comprehensive Scaffolding Services</h2>
+        <p class="typo-xl text-muted-foreground leading-relaxed">
+          From bespoke design to edge protection and dismantling, we handle
+          every aspect of the scaffolding process with professionalism and
+          industry-leading safety standards.
+        </p>
+      </div>
+
+      <ServiceCarousel services={formattedServices} client:load />
+    </div>
+  </section>
+
+  {/* Areas We Cover Section */}
+  <section class="py-24 bg-muted/30">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        {/* Left Image */}
+        <div class="rounded-3xl overflow-hidden shadow-xl sticky top-24">
+          <img
+            src="/london-areas.png"
+            alt="Scaffolding coverage across London"
+            class="w-full h-[500px] lg:h-[700px] object-cover hover:scale-105 transition-transform duration-700"
+          />
+          <div
+            class="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl"
+          >
+            <h4 class="text-white font-bold typo-lg mb-2">
+              London-Wide Coverage
+            </h4>
+            <p class="text-white/80 text-sm leading-relaxed">
+              We operate across all 32 boroughs, providing local expertise with
+              city-wide reliability.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Content & Grid */}
+        <div class="space-y-12">
+          <div class="space-y-6">
+            <h2 class="typo-4xl leading-tight">
+              Serving All Local London Areas
+            </h2>
+            <p class="typo-xl text-muted-foreground leading-relaxed">
+              Whether you're in the heart of the City or the outer suburbs, our
+              team provides rapid response and expert local knowledge for your
+              scaffolding needs.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {
+              areas.map((area) => (
+                <Card className="bg-white border-slate-100 h-full flex flex-col shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group overflow-hidden">
+                  <CardHeader className="p-8">
+                    <CardTitle className="typo-xl font-bold group-hover:text-primary transition-colors">
+                      {area.data.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-8 grow">
+                    <p class="typo-base text-muted-foreground line-clamp-2">
+                      {area.data.description}
+                    </p>
+                    <Button
+                      asChild
+                      variant="link"
+                      className="p-0 h-auto mt-6 text-primary font-bold hover:no-underline group/btn"
+                    >
+                      <a
+                        href={`/areas/${area.slug}`}
+                        class="flex items-center gap-2"
+                      >
+                        View Local Info{" "}
+                        <span class="group-hover/btn:translate-x-1 transition-transform">
+                          →
+                        </span>
+                      </a>
+                    </Button>
+                  </CardContent>
+                  <div class="h-2 w-full bg-slate-50 mt-8 group-hover:bg-primary/10 transition-colors" />
+                </Card>
+              ))
+            }
+          </div>
+
+          <a
+            href="/areas-we-cover"
+            class="inline-block font-bold text-primary hover:underline typo-lg pt-4"
+          >
+            Check all 32 boroughs & regional hubs →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Projects Section */}
+  <section class="py-24 overflow-x-hidden">
+    <div class="wrapper">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12"
+      >
+        <div class="max-w-3xl space-y-4 text-center md:text-left">
+          <h2 class="typo-4xl">Featured Projects Across London</h2>
+          <p class="typo-lg text-muted-foreground leading-relaxed">
+            Take a look at how we've helped residential and commercial clients
+            achieve their building goals with safe and efficient access
+            solutions.
+          </p>
+        </div>
+        <a
+          href="/projects"
+          class="font-bold text-primary hover:underline typo-base whitespace-nowrap"
+        >
+          Explore Full Portfolio →
+        </a>
+      </div>
+
+      <ProjectSlider client:load />
+    </div>
+  </section>
+
+  {/* Testimonials Section */}
+  <section class="py-24 bg-primary text-white overflow-hidden">
+    <div class="wrapper">
+      <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
+        <h2 class="typo-4xl">What Our Clients Say</h2>
+        <p class="typo-lg text-white/80 leading-relaxed">
+          We take pride in our reputation for reliability, safety, and
+          professional service across the city.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          testimonials.map((testi) => (
+            <div class="bg-white/10 backdrop-blur-md border border-white/10 p-10 rounded-3xl relative flex flex-col gap-6">
+              <div class="flex gap-1 text-yellow-400">
+                {[...Array(5)].map(() => (
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p class="typo-lg leading-relaxed italic text-white/90">
+                "{testi.content}"
+              </p>
+              <div class="mt-auto pt-6 border-t border-white/10">
+                <h4 class="font-bold typo-base">{testi.name}</h4>
+                <p class="text-sm text-white/60 uppercase tracking-widest">
+                  {testi.role}
+                </p>
+              </div>
+              <div class="absolute -top-6 left-10 text-white/5 pointer-events-none">
+                <svg class="w-24 h-24 fill-current" viewBox="0 0 24 24">
+                  <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V12C14.017 12.5523 13.5693 13 13.017 13H12.017V4.5C12.017 4.22386 12.2409 4 12.517 4H21.517C21.7931 4 22.017 4.22386 22.017 4.5V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM3 21L3 18C3 16.8954 3.89543 16 5 16H8C8.55228 16 9 15.5523 9 15V9C9 8.44772 8.55228 8 8 8H4C3.44772 8 3 8.44772 3 9V12C3 12.5523 2.55228 13 2 13H1V4.5C1 4.22386 1.22386 4 1.5 4H10.5C10.7761 4 11 4.22386 11 4.5V15C11 18.3137 8.31371 21 5 21H3Z" />
+                </svg>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ Section */}
+  <section class="py-24 bg-muted/30">
+    <div class="wrapper">
+      <HomeFAQ client:load />
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <CTA
+    title="Ready for a safe, reliable scaffolding solution?"
+    description="Contact London's premier scaffolding company today for a free site assessment and no-obligation quote."
+    buttonText="Request Your Free Quote"
+    id="quote"
+  />
+</Main>

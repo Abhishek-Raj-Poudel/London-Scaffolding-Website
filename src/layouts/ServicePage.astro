@@ -1,0 +1,124 @@
+---
+import MainLayout from "./main.astro";
+import { CTA } from "@/components/CTA";
+import { FAQ } from "@/components/FAQ";
+
+interface Props {
+  content: {
+    title: string;
+    description: string;
+    faqs?: { question: string; answer: string }[];
+    cta?: {
+      title: string;
+      description: string;
+      buttonText: string;
+      phoneText: string;
+    };
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<MainLayout content={{ title: content.title }}>
+  {/* Hero Section */}
+  <section class="bg-primary text-white py-20 border-b border-white/10">
+    <div class="wrapper">
+      <div class="max-w-4xl flex flex-col gap-6">
+        <h1 class="typo-5xl">{content.title}</h1>
+        <p class="typo-xl text-white/90 leading-relaxed">
+          {content.description}
+        </p>
+        <div class="flex gap-4 mt-4">
+          <a
+            href="#quote"
+            class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-white/90 transition-colors"
+          >
+            Get Instant Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Main Content */}
+  <section class="py-20">
+    <div class="wrapper grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2 prose prose-slate max-w-none">
+        <div class="space-y-8">
+          <slot />
+        </div>
+      </div>
+
+      {/* Sidebar / Quick Info */}
+      <aside class="space-y-8">
+        <div class="bg-muted p-8 rounded-2xl">
+          <h3 class="typo-xl font-bold mb-4">Why Choose Us?</h3>
+          <ul class="space-y-3 typo-base">
+            <li class="flex items-center gap-2">
+              ✓ Fully Insured & Accredited
+            </li>
+            <li class="flex items-center gap-2">✓ 24/7 Emergency Support</li>
+            <li class="flex items-center gap-2">✓ Competitive Pricing</li>
+            <li class="flex items-center gap-2">✓ Experienced Professionals</li>
+          </ul>
+        </div>
+
+        {/* Placeholder Gallery */}
+        <div
+          class="border-2 border-dashed border-muted-foreground/30 p-8 rounded-2xl flex flex-col items-center justify-center text-center gap-4 min-h-[300px]"
+        >
+          <div
+            class="w-12 h-12 bg-muted rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-muted-foreground"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path></svg
+            >
+          </div>
+          <p class="typo-sm text-muted-foreground">
+            Gallery imagery coming soon
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {/* FAQ Section */}
+  {content.faqs && <FAQ items={content.faqs} client:load />}
+
+  {/* CTA Section */}
+  <CTA
+    title={content.cta?.title}
+    description={content.cta?.description}
+    buttonText={content.cta?.buttonText}
+    phoneText={content.cta?.phoneText}
+    id="quote"
+  />
+</MainLayout>
+
+<style is:global>
+  @reference "../styles/global.css";
+
+  /* Markdown styling for the slot */
+  .prose h2 {
+    @apply typo-3xl mt-12 mb-6;
+  }
+  .prose h3 {
+    @apply typo-2xl mt-8 mb-4;
+  }
+  .prose p {
+    @apply typo-lg leading-relaxed mb-6;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-6 space-y-2 typo-lg;
+  }
+</style>

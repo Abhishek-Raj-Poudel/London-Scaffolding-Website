@@ -1,0 +1,116 @@
+---
+import Main from "../layouts/main.astro";
+import { CTA } from "@/components/CTA";
+import { getCollection } from "astro:content";
+
+const areas = await getCollection("areas");
+---
+
+<Main
+  content={{ title: "Areas We Cover | Scaffolding Services Across London" }}
+>
+  {/* Hero Hub Section */}
+  <section class="bg-primary text-white py-24 border-b border-white/10">
+    <div class="wrapper">
+      <div class="max-w-4xl flex flex-col gap-6">
+        <h1 class="typo-5xl">Areas We Cover Near You</h1>
+        <p class="typo-xl text-white/90 leading-relaxed">
+          Based in London, we provide comprehensive scaffolding solutions for
+          homeowners, contractors, and developers across all main regions and
+          boroughs. Find your local scaffolding experts below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Main Regions Grid */}
+  <section class="py-20">
+    <div class="wrapper">
+      <h2 class="typo-3xl mb-12 text-center text-primary">
+        Our Main Service Hubs
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          areas.map((area) => (
+            <a
+              href={`/areas/${area.slug}`}
+              class="group border rounded-3xl p-8 hover:border-primary transition-all duration-300 bg-white hover:shadow-2xl hover:-translate-y-1 block"
+            >
+              <h3 class="typo-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                {area.data.title}
+              </h3>
+              <p class="typo-base text-muted-foreground mb-6 line-clamp-3">
+                {area.data.description}
+              </p>
+              <span class="text-primary font-bold flex items-center gap-2">
+                Explore Local Projects
+                <svg
+                  class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Local Boroughs Section (Phase 2 Preview) */}
+  <section class="py-20 bg-muted/30">
+    <div class="wrapper">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="typo-3xl mb-6">Expert Scaffolding in Every Borough</h2>
+        <p class="typo-lg text-muted-foreground">
+          We have the local knowledge and council relationships to provide
+          scaffolding in any London borough, ensuring your permits are handled
+          efficiently.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {
+          [
+            "Croydon",
+            "Hounslow",
+            "Ealing",
+            "Lambeth",
+            "Southwark",
+            "Barnet",
+            "Enfield",
+            "Greenwich",
+            "Brent",
+            "Bromley",
+            "Hackney",
+            "Hammersmith & Fulham",
+          ].map((borough) => (
+            <div class="bg-white p-4 rounded-xl border text-center font-semibold text-primary/80 hover:bg-primary hover:text-white transition-colors cursor-default">
+              {borough}
+            </div>
+          ))
+        }
+      </div>
+
+      <p
+        class="text-center mt-12 text-muted-foreground typo-sm font-medium italic"
+      >
+        + Covering all 32 London Boroughs & The City
+      </p>
+    </div>
+  </section>
+
+  <CTA
+    title="Looking for Scaffolding Near You?"
+    description="We are currently working on projects across London. Contact us for a free local site assessment."
+    buttonText="Check Availability"
+  />
+</Main>
