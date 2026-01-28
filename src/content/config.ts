@@ -40,7 +40,26 @@ const areas = defineCollection({
   }),
 });
 
+const projects = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string(),
+    location: z.string(),
+    image: image(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+    cta: z.object({
+      title: z.string().default('Ready to start your project?'),
+      description: z.string().default('Contact us today for a free, no-obligation scaffolding quote in London.'),
+      buttonText: z.string().default('Get a Free Quote'),
+      phoneText: z.string().default('020 XXXX XXXX'),
+    }).optional(),
+  }),
+});
+
 export const collections = {
   'services': services,
   'areas': areas,
+  'projects': projects,
 };

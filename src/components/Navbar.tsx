@@ -11,6 +11,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+
 const services = [
   {
     title: "Domestic Scaffolding",
@@ -70,6 +79,16 @@ const resources = [
   { title: "FAQs", href: "/faqs" },
 ];
 
+const navLinks = [
+  { title: "Home", href: "/" },
+  { title: "Services", href: "/#services", subItems: services },
+  { title: "Areas We Cover", href: "/areas-we-cover", subItems: areas },
+  { title: "Projects", href: "/projects" },
+  { title: "Resources", href: "/#resources", subItems: resources },
+  { title: "About", href: "/about" },
+  { title: "Contact", href: "/contact" },
+];
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
 
@@ -112,8 +131,8 @@ export function Navbar() {
           </a>
         </div>
 
-        {/* Center: Navigation Links */}
-        <div className="hidden md:flex grow justify-center">
+        {/* Center: Desktop Navigation Links */}
+        <div className="hidden lg:flex grow justify-center">
           <NavigationMenu>
             <NavigationMenuList>
               {/* Services Dropdown */}
@@ -244,20 +263,88 @@ export function Navbar() {
           </NavigationMenu>
         </div>
 
-        {/* Right: Get a Quote */}
-        <div className="shrink-0">
+        {/* Right: Get a Quote & Mobile Menu */}
+        <div className="flex items-center gap-4">
           <Button
             asChild
             className={cn(
-              "rounded-full shadow-none px-6 py-5 border-2 font-bold transition-all duration-300",
+              "rounded-full shadow-none px-4 py-5 md:px-6 border-2 font-bold transition-all duration-300 text-sm md:text-base",
               isScrolled
                 ? "border-primary text-primary hover:bg-primary hover:text-white"
-                : "border-white text-white hover:bg-white hover:text-primary",
+                : "border-white text-white bg-primary hover:bg-white hover:text-primary",
             )}
             variant="outline"
           >
             <a href="/quote">Get a Quote</a>
           </Button>
+
+          {/* Mobile Menu Sheet */}
+          <div className="lg:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "transition-colors duration-300 h-10 w-10",
+                    isScrolled
+                      ? "text-primary hover:bg-slate-100"
+                      : "text-white hover:bg-white/10",
+                  )}
+                >
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                <SheetHeader className="text-left border-b pb-6 mb-6">
+                  <SheetTitle className="text-2xl font-bold tracking-tighter text-primary">
+                    LONDON SCAFFOLDING
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-6 overflow-y-auto max-h-[calc(100vh-180px)] pr-2">
+                  {navLinks.map((link) => (
+                    <div key={link.title} className="flex flex-col gap-3">
+                      <a
+                        href={link.href}
+                        className="text-lg font-bold hover:text-primary transition-colors flex items-center justify-between"
+                      >
+                        {link.title}
+                      </a>
+                      {link.subItems && (
+                        <div className="flex flex-col gap-2 pl-4 border-l-2 border-slate-100">
+                          {link.subItems.slice(0, 5).map((sub) => (
+                            <a
+                              key={sub.title}
+                              href={sub.href}
+                              className="text-sm text-slate-600 hover:text-primary transition-colors"
+                            >
+                              {sub.title}
+                            </a>
+                          ))}
+                          {link.subItems.length > 5 && (
+                            <a
+                              href={link.href}
+                              className="text-sm font-semibold text-primary"
+                            >
+                              View All →
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-auto pt-8 border-t">
+                  <Button
+                    asChild
+                    className="w-full rounded-xl py-6 text-lg font-bold"
+                  >
+                    <a href="/quote">Request a Free Quote</a>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </div>

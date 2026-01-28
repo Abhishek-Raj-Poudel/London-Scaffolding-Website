@@ -1,0 +1,139 @@
+---
+import MainLayout from "./main.astro";
+import { CTA } from "@/components/CTA";
+import { Image } from "astro:assets";
+
+interface Props {
+  content: {
+    title: string;
+    description: string;
+    location: string;
+    image: any;
+    cta?: {
+      title: string;
+      description: string;
+      buttonText: string;
+      phoneText: string;
+    };
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<MainLayout content={{ title: content.title }}>
+  {/* Project Hero Section */}
+  <section
+    class="bg-primary text-white py-24 border-b border-white/10 relative overflow-hidden"
+  >
+    <div class="absolute inset-0 opacity-10">
+      <Image src={content.image} alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="wrapper relative z-10">
+      <div class="max-w-4xl flex flex-col gap-6">
+        <div class="flex items-center gap-3">
+          <span
+            class="bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
+          >
+            {content.location}
+          </span>
+          <span class="text-white/60 text-sm">Case Study</span>
+        </div>
+        <h1 class="typo-5xl">{content.title}</h1>
+        <p class="typo-xl text-white/90 leading-relaxed max-w-2xl">
+          {content.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Project Content */}
+  <section class="py-20 lg:py-32">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        {/* Main Content Area */}
+        <div class="lg:col-span-8 prose prose-slate max-w-none">
+          <div class="space-y-8">
+            <slot />
+          </div>
+        </div>
+
+        {/* Sidebar / Project Stats */}
+        <aside class="lg:col-span-4 space-y-12">
+          <div class="bg-muted p-10 rounded-3xl space-y-8">
+            <h3 class="typo-xl font-bold">Project Details</h3>
+            <div class="space-y-6">
+              <div>
+                <p
+                  class="text-sm text-muted-foreground uppercase tracking-wider font-bold mb-1"
+                >
+                  Location
+                </p>
+                <p class="typo-lg font-semibold">{content.location}</p>
+              </div>
+              <div>
+                <p
+                  class="text-sm text-muted-foreground uppercase tracking-wider font-bold mb-1"
+                >
+                  Service Type
+                </p>
+                <p class="typo-lg font-semibold">Professional Scaffolding</p>
+              </div>
+              <div>
+                <p
+                  class="text-sm text-muted-foreground uppercase tracking-wider font-bold mb-1"
+                >
+                  Status
+                </p>
+                <p class="typo-lg font-semibold flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  Completed
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500"
+          >
+            <Image
+              src={content.image}
+              alt={content.title}
+              class="w-full h-auto object-cover aspect-square"
+            />
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <CTA
+    title={content.cta?.title}
+    description={content.cta?.description}
+    buttonText={content.cta?.buttonText}
+    phoneText={content.cta?.phoneText}
+    id="quote"
+  />
+</MainLayout>
+
+<style is:global>
+  @reference "../styles/global.css";
+
+  /* Markdown styling for the slot */
+  .prose h2 {
+    @apply typo-3xl mt-12 mb-6 font-bold text-slate-900;
+  }
+  .prose h3 {
+    @apply typo-2xl mt-8 mb-4 font-bold text-slate-800;
+  }
+  .prose p {
+    @apply typo-lg leading-relaxed mb-6 text-slate-600;
+  }
+  .prose ul {
+    @apply list-disc list-outside mb-6 space-y-3 typo-lg ml-6 text-slate-600;
+  }
+  .prose li::marker {
+    @apply text-primary;
+  }
+</style>

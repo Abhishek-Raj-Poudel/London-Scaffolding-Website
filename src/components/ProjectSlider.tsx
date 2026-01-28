@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-scaffolding.png";
+import areasImage from "@/assets/london-areas.png";
 
 const projects = [
   {
@@ -15,28 +17,28 @@ const projects = [
     description:
       "Multi-story complex scaffolding for a major office redevelopment in the City.",
     location: "City of London",
-    image: "/hero-scaffolding.png",
+    image: heroImage.src,
   },
   {
     title: "Period Property Restoration",
     description:
       "Delicate access solutions for the restoration of a Grade II listed townhouse.",
     location: "Kensington",
-    image: "/london-areas.png",
+    image: areasImage.src,
   },
   {
     title: "Industrial Loading Bays",
     description:
       "Heavy-duty loading bay construction for a logistics facility expansion.",
     location: "Barking",
-    image: "/hero-scaffolding.png",
+    image: heroImage.src,
   },
   {
     title: "Temporary Roof Solution",
     description:
       "Full weather protection for a residential block during roof replacement.",
     location: "Croydon",
-    image: "/london-areas.png",
+    image: areasImage.src,
   },
 ];
 
@@ -54,9 +56,9 @@ export function ProjectSlider() {
           {projects.map((project, index) => (
             <CarouselItem
               key={index}
-              className="pl-4 md:basis-1/2 lg:basis-1/2"
+              className="pl-4 md:basis-1/2 lg:basis-1/3"
             >
-              <Card className="bg-white border-slate-200 h-full flex flex-col shadow-none overflow-hidden group pt-0">
+              <Card className="bg-white border-slate-200 h-full flex flex-col shadow-none overflow-hidden group pt-0 gap-0">
                 <div className="relative h-64 lg:h-80 overflow-hidden">
                   <img
                     src={project.image}

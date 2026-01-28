@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-scaffolding.png";
 
 interface Service {
   title: string;
@@ -42,32 +43,33 @@ export function ServiceCarousel({ services }: ServiceCarouselProps) {
               key={index}
               className="pl-4 md:basis-1/2 lg:basis-1/3"
             >
-              <Card className="bg-transparent border-slate-200 h-full flex flex-col shadow-none pb-0">
-                <CardHeader className="pt-8 px-8">
-                  <CardTitle className="typo-xl font-bold">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="px-8 grow">
-                  <p className="typo-base text-muted-foreground line-clamp-3 mb-6">
-                    {service.description}
-                  </p>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="rounded-full border-primary text-primary hover:bg-primary hover:text-white transition-all font-bold"
-                  >
-                    <a href={`/services/${service.slug}`}>Learn More</a>
-                  </Button>
-                </CardContent>
-                <CardFooter className="p-0 mt-8 overflow-hidden rounded-b-3xl">
-                  <img
-                    src={service.image || "/hero-scaffolding.png"}
-                    alt={service.title}
-                    className="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                </CardFooter>
-              </Card>
+              <a href={`/services/${service.slug}`}>
+                <Card className="group bg-transparent border-slate-200 h-full flex flex-col shadow-none pb-0">
+                  <CardHeader className="pt-8 px-8">
+                    <CardTitle className="typo-xl font-bold">
+                      {service.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-8 grow">
+                    <p className="typo-base text-muted-foreground line-clamp-3 mb-6">
+                      {service.description}
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="rounded-full border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all font-bold"
+                    >
+                      Learn More
+                    </Button>
+                  </CardContent>
+                  <CardFooter className="pb-6 mt-8 overflow-hidden rounded-b-3xl">
+                    <img
+                      src={service.image || heroImage.src}
+                      alt={service.title}
+                      className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 rounded-md"
+                    />
+                  </CardFooter>
+                </Card>
+              </a>
             </CarouselItem>
           ))}
         </CarouselContent>
