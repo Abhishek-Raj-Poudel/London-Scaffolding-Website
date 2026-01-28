@@ -10,6 +10,7 @@ faqs:
     answer: "Yes, we are equipped to handle the high safety and security requirements of major commercial projects in Canary Wharf and the Docklands."
   - question: "Can you help with council permits in East London?"
     answer: "Yes, we regularly work with East London councils to secure all necessary street and pavement scaffolding permits."
+mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79417.8920138927!2d0.0152358!3d51.5259837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a6401f80f1b5%3A0x853dc724ae7478d!2sEast%20London%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000"
 ---
 
 ## Leading Scaffolding Services in East London

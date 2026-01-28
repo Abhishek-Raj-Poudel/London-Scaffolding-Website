@@ -2,6 +2,7 @@
 import MainLayout from "./main.astro";
 import { CTA } from "@/components/CTA";
 import { FAQ } from "@/components/FAQ";
+import LocalMap from "@/components/LocalMap.astro";
 
 interface Props {
   content: {
@@ -14,6 +15,7 @@ interface Props {
       buttonText: string;
       phoneText: string;
     };
+    mapEmbedUrl?: string;
   };
 }
 
@@ -48,6 +50,18 @@ const { content } = Astro.props;
         <div class="space-y-8">
           <slot />
         </div>
+
+        {
+          content.mapEmbedUrl && (
+            <div class="mt-12">
+              <h2 class="typo-3xl font-bold mb-6">Area Coverage</h2>
+              <LocalMap
+                embedUrl={content.mapEmbedUrl}
+                title={`Coverage Map for ${content.title}`}
+              />
+            </div>
+          )
+        }
       </div>
 
       {/* Sidebar / Quick Info */}

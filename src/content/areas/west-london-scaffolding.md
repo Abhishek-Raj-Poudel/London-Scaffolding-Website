@@ -10,6 +10,7 @@ faqs:
     answer: "We ensure our scaffolding is as neat and tidy as possible, respecting the aesthetics of West London's premium residential areas."
   - question: "Do you handle West London council permits?"
     answer: "Yes, we manage all permit applications with West London local authorities, including Westminster and RBKC."
+mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79450.7712613919!2d-0.347963!3d51.498877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760dcaf07d91e7%3A0x4a5d89b33a2588c7!2sWest%20London%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000"
 ---
 
 ## High-Quality Scaffolding Services Across West London

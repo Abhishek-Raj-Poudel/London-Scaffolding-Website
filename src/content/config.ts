@@ -37,6 +37,7 @@ const areas = defineCollection({
       buttonText: z.string().default('Get a Free Quote'),
       phoneText: z.string().default('020 XXXX XXXX'),
     }).optional(),
+    mapEmbedUrl: z.string().optional(),
   }),
 });
 

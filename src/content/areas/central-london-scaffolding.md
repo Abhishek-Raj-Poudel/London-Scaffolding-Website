@@ -10,6 +10,7 @@ faqs:
     answer: "Yes, we are highly experienced in the strict safety and logistical requirements of the City of London."
   - question: "Can you manage complex pedestrian protection?"
     answer: "Absolutely. We install high-quality fans, netting, and lighting to ensure the public remains safe in high-footfall Central London areas."
+mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39736.31175659103!2d-0.15655485!3d51.528308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2d4f8287c1%3A0x6334f59048a17688!2sCentral%20London%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000"
 ---
 
 ## Specialist Scaffolding Solutions for Central London

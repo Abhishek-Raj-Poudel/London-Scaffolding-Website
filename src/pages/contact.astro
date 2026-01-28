@@ -1,0 +1,150 @@
+---
+import MainLayout from "../layouts/main.astro";
+import LocalMap from "@/components/LocalMap.astro";
+import { ContactForm } from "@/components/ContactForm";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+
+const officeMapUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79474.47!2d-0.1276!3d51.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2slondon!5e0!3m2!1sen!2suk!4v1700000000000";
+---
+
+<MainLayout content={{ title: "Contact Us" }}>
+  {/* Hero Section */}
+  <section class="bg-primary text-white py-20 border-b border-white/10">
+    <div class="wrapper">
+      <div class="max-w-4xl flex flex-col gap-6">
+        <h1 class="typo-5xl">Get in Touch</h1>
+        <p class="typo-xl text-white/90 leading-relaxed">
+          Ready to start your scaffolding project? Our expert team is here to
+          help. Contact us today for a free, no-obligation quote.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact Information Section */}
+  <section class="py-20 bg-slate-50">
+    <div class="wrapper">
+      <div class="text-center mb-12">
+        <h2 class="typo-4xl font-bold mb-4">Contact Information</h2>
+        <p class="typo-lg text-muted-foreground max-w-2xl mx-auto">
+          Reach out to us through any of the following channels
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Phone */}
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+        >
+          <div
+            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+          >
+            <Phone className="w-6 h-6 text-primary" />
+          </div>
+          <h3 class="typo-xl font-bold mb-2">Phone</h3>
+          <a
+            href="tel:02012345678"
+            class="typo-base text-primary hover:underline"
+          >
+            020 1234 5678
+          </a>
+          <p class="typo-sm text-muted-foreground mt-1">24/7 Emergency Line</p>
+        </div>
+
+        {/* Email */}
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+        >
+          <div
+            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+          >
+            <Mail className="w-6 h-6 text-primary" />
+          </div>
+          <h3 class="typo-xl font-bold mb-2">Email</h3>
+          <a
+            href="mailto:info@londonscaffolding.co.uk"
+            class="typo-base text-primary hover:underline break-all"
+          >
+            info@londonscaffolding.co.uk
+          </a>
+          <p class="typo-sm text-muted-foreground mt-1">
+            We reply within 24 hours
+          </p>
+        </div>
+
+        {/* Address */}
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+        >
+          <div
+            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+          >
+            <MapPin className="w-6 h-6 text-primary" />
+          </div>
+          <h3 class="typo-xl font-bold mb-2">Address</h3>
+          <p class="typo-base">
+            123 Scaffold Street<br />
+            London, E1 6AN
+          </p>
+        </div>
+
+        {/* Business Hours */}
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+        >
+          <div
+            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+          >
+            <Clock className="w-6 h-6 text-primary" />
+          </div>
+          <h3 class="typo-xl font-bold mb-2">Business Hours</h3>
+          <p class="typo-base">
+            Mon - Fri: 7am - 6pm<br />
+            Sat: 8am - 4pm<br />
+            Sun: Emergency Only
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Office Locator Section */}
+  <section class="py-20">
+    <div class="wrapper">
+      <div class="text-center mb-12">
+        <h2 class="typo-4xl font-bold mb-4">Find Our Office</h2>
+        <p class="typo-lg text-muted-foreground max-w-2xl mx-auto">
+          Visit us at our London headquarters
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <LocalMap
+          embedUrl={officeMapUrl}
+          title="London Scaffolding Office Location"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* Contact Form Section */}
+  <section class="py-20 bg-slate-50">
+    <div class="wrapper">
+      <div class="text-center mb-12">
+        <h2 class="typo-4xl font-bold mb-4">Request a Quote</h2>
+        <p class="typo-lg text-muted-foreground max-w-2xl mx-auto">
+          Tell us about your project and we'll provide a free, detailed quote
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <ContactForm client:load />
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style is:global>
+  @reference "../styles/global.css";
+</style>

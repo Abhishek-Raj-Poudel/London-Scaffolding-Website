@@ -10,6 +10,7 @@ faqs:
     answer: "Yes, we handle all scaffolding permit applications with North London councils like LB Islington and LB Camden."
   - question: "How quickly can you supply scaffolding in North London?"
     answer: "We offer a rapid local response, often providing assessments and quotes within 24 hours for North London projects."
+mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79365.17983693245!2d-0.2185521!3d51.6030999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761a2938f32f3d%3A0x9d375269db234193!2sNorth%20London%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000"
 ---
 
 ## Expert Scaffolding Services Across North London
