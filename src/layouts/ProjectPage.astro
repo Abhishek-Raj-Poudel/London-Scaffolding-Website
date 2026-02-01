@@ -21,7 +21,13 @@ interface Props {
 const { content } = Astro.props;
 ---
 
-<MainLayout content={{ title: content.title }}>
+<MainLayout
+  content={{
+    title: content.title,
+    description: content.description,
+    image: content.image.src,
+  }}
+>
   {/* Project Hero Section */}
   <section
     class="bg-primary text-white py-24 border-b border-white/10 relative overflow-hidden"

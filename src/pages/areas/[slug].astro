@@ -12,8 +12,14 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const allServices = await getCollection("services");
+const services = allServices.map((service) => ({
+  title: service.data.title,
+  slug: service.slug,
+}));
 ---
 
-<AreaPage content={entry.data}>
+<AreaPage content={entry.data} services={services}>
   <Content />
 </AreaPage>

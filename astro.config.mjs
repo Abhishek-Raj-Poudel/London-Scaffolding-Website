@@ -2,11 +2,12 @@
 
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
-
+import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://london-scaffolding.com", // Canonical URL domain
   vite: {
       plugins: [tailwindcss()],
     optimizeDeps: {
@@ -14,5 +15,5 @@ export default defineConfig({
     },
 	},
 
-  integrations: [react()],
+  integrations: [react(), sitemap()],
 });

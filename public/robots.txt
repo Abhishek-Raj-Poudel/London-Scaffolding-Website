@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://london-scaffolding.com/sitemap-index.xml
