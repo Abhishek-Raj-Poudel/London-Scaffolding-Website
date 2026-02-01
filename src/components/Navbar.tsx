@@ -11,6 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import logo from "@/assets/logo.png";
+
 import {
   Sheet,
   SheetContent,
@@ -119,15 +121,11 @@ export function Navbar() {
               isScrolled ? "text-primary" : "text-white",
             )}
           >
-            LONDON
-            <span
-              className={cn(
-                "transition-colors duration-300",
-                isScrolled ? "text-primary" : "text-white/90",
-              )}
-            >
-              SCAFFOLDING
-            </span>
+            <img
+              src={logo.src}
+              alt="Logo"
+              className={cn("h-10", isScrolled ? "" : "brightness-0 invert")}
+            />
           </a>
         </div>
 

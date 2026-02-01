@@ -1,0 +1,168 @@
+---
+import MainLayout from "../layouts/main.astro";
+import heroImage from "@/assets/hero-scaffolding.png";
+import { ProjectSlider } from "@/components/ProjectSlider";
+import { CTA } from "@/components/CTA";
+import { TeamSection } from "@/components/TeamSection";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Target, Eye } from "lucide-react";
+
+const stats = [
+  { value: "500+", label: "Projects Completed" },
+  { value: "50+", label: "Expert Team Members" },
+  { value: "15+", label: "Years Experience" },
+  { value: "24/7", label: "Support Available" },
+];
+---
+
+<MainLayout
+  content={{
+    title: "About Us | London Scaffolding",
+    description:
+      "Learn about London Scaffolding's mission, vision, and expert team. Over 10 years of experience providing safe access solutions in London.",
+  }}
+>
+  {/* Hero Section */}
+  <section
+    class="bg-primary text-white pt-20 pb-32 border-b border-white/10 relative overflow-hidden"
+  >
+    <div class="absolute inset-0 opacity-20">
+      <img
+        src={heroImage.src}
+        alt="Scaffolding structure"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="wrapper relative z-10">
+      <div
+        class="flex flex-col lg:flex-row gap-16 justify-between items-center"
+      >
+        {/* Left Side: Content */}
+        <div class="flex flex-col gap-6 items-start text-left">
+          <span
+            class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest border border-white/20"
+          >
+            About Our Company
+          </span>
+          <h1 class="typo-5xl leading-tight">
+            Building London's Future <br /> Since 2012
+          </h1>
+          <p class="typo-xl text-white/90 leading-relaxed max-w-xl">
+            We are more than just a scaffolding company. We are your partners in
+            construction, dedicated to safety, reliability, and excellence in
+            every project.
+          </p>
+        </div>
+
+        {/* Right Side: Stats Grid */}
+        <div class="grid grid-cols-2 w-full max-w-lg">
+          {
+            stats.map((stat, index) => (
+              <div
+                class:list={[
+                  "w-full h-full p-10 flex flex-col items-center text-center gap-2",
+                  index === 0 && "border-r-2 border-white",
+                  index === 2 && "border-r-2 border-t-2 border-white",
+                  index === 3 && "border-t-2 border-white",
+                ]}
+              >
+                <span class="typo-5xl font-normal">{stat.value}</span>
+                <span class="typo-base text-white/70">{stat.label}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Mission & Vision Section */}
+  <section class="py-24">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <h2 class="typo-4xl leading-tight">
+            Driven by Safety, <br /> Defined by Quality
+          </h2>
+          <p class="typo-lg text-muted-foreground leading-relaxed">
+            At London Scaffolding, we understand that every successful
+            construction project begins with a safe and secure foundation. Our
+            commitment goes beyond simply erecting tubes and boards; we provide
+            peace of mind.
+          </p>
+          <p class="typo-lg text-muted-foreground leading-relaxed">
+            From small residential renovations to large-scale commercial
+            developments, we approach every job with the same level of rigorous
+            planning and attention to detail.
+          </p>
+        </div>
+        <div class="grid gap-6">
+          <Card className="border shadow-none">
+            <CardHeader>
+              <div
+                class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4"
+              >
+                <Target className="w-6 h-6" />
+              </div>
+              <CardTitle className="typo-xl text-primary">Our Mission</CardTitle
+              >
+            </CardHeader>
+            <CardContent>
+              <p class="typo-base text-muted-foreground">
+                To provide the safest, most reliable, and efficient scaffolding
+                solutions in London, enabling our clients to build with
+                confidence while prioritizing the well-being of our workforce
+                and the public.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="border shadow-none">
+            <CardHeader>
+              <div
+                class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4"
+              >
+                <Eye className="w-6 h-6" />
+              </div>
+              <CardTitle className="typo-xl text-primary">Our Vision</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p class="typo-base text-muted-foreground">
+                To be the undisputed leader in London's scaffolding industry,
+                recognized for our innovation, safety record, and unwavering
+                commitment to customer satisfaction.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TeamSection client:load />
+
+  {/* Achievements / Projects Section */}
+  <section class="py-24 overflow-x-hidden">
+    <div class="wrapper">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12"
+      >
+        <div class="max-w-3xl space-y-4 text-center md:text-left">
+          <h2 class="typo-4xl">Our Recent Achievements</h2>
+          <p class="typo-lg text-muted-foreground leading-relaxed">
+            A showcase of our capabilities and the trust placed in us by clients
+            across the city.
+          </p>
+        </div>
+      </div>
+
+      <ProjectSlider client:load />
+    </div>
+  </section>
+
+  <CTA
+    title="Ready to work with the best team in London?"
+    description="Contact us today to discuss your project requirements and see how we can assist you."
+    buttonText="Get in Touch"
+    id="contact"
+  />
+</MainLayout>

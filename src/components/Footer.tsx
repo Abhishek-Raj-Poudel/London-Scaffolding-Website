@@ -1,5 +1,4 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const services = [
   {
@@ -31,7 +30,11 @@ export function Footer() {
           {/* Column 1: Company Info */}
           <div className="space-y-6">
             <a href="/" className="text-2xl font-bold tracking-tighter">
-              LONDON<span className="text-white/80">SCAFFOLDING</span>
+              <img
+                src={logo.src}
+                alt="Logo"
+                className={"h-10 brightness-0 invert mb-10"}
+              />
             </a>
             <p className="text-white/70 typo-base leading-relaxed">
               Premium scaffolding solutions across London. Family-run business
