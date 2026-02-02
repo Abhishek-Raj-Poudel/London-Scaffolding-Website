@@ -1,0 +1,143 @@
+---
+import MainLayout from "../layouts/main.astro";
+import { QuoteForm } from "../components/QuoteForm";
+import { Phone, Mail, MapPin, CheckCircle2 } from "lucide-react";
+
+// Content for SEO
+const content = {
+  title: "Get a Free Scaffolding Quote | London Scaffolding",
+  description:
+    "Request a free, no-obligation quote for domestic or commercial scaffolding services in London using our easy online form.",
+};
+
+const features = [
+  "Free Site Surveys & Estimates",
+  "Competitive Pricing",
+  "Fully Insured & CITB Registered",
+  "24/7 Emergency Response",
+  "Fast Turnaround Times",
+  "Expert Technical Advice",
+];
+---
+
+<MainLayout content={content}>
+  <div class="bg-primary min-h-screen">
+    {/* Page Header */}
+    <div class="container mx-auto px-4 pt-12 pb-8 text-center text-white">
+      <h1 class="typo-5xl mb-4">Get Your Free Quote</h1>
+      <p class="typo-xl text-white/80 max-w-2xl mx-auto">
+        Complete the form below and ours team will get back to you with a
+        comprehensive estimate for your project.
+      </p>
+    </div>
+
+    <section class="pb-24">
+      <div class="wrapper">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Info & Trust Signals */}
+          <div
+            class="lg:col-span-5 flex flex-col gap-10 text-white lg:sticky lg:top-8"
+          >
+            {/* Contact Info Box */}
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10"
+            >
+              <h3 class="typo-2xl font-bold mb-6">Contact Information</h3>
+              <div class="flex flex-col gap-6">
+                <a
+                  href="tel:0208XXXXXXX"
+                  class="flex items-center gap-4 group hover:bg-white/5 p-3 -mx-3 rounded-xl transition-colors"
+                >
+                  <div
+                    class="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shrink-0"
+                  >
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p
+                      class="text-white/60 text-sm font-medium uppercase tracking-wider"
+                    >
+                      Call Us Now
+                    </p>
+                    <p class="text-xl font-bold">020 8XXX XXXX</p>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:info@londonscaffolding.co.uk"
+                  class="flex items-center gap-4 group hover:bg-white/5 p-3 -mx-3 rounded-xl transition-colors"
+                >
+                  <div
+                    class="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shrink-0"
+                  >
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p
+                      class="text-white/60 text-sm font-medium uppercase tracking-wider"
+                    >
+                      Email Us
+                    </p>
+                    <p class="text-xl font-bold">
+                      info@londonscaffolding.co.uk
+                    </p>
+                  </div>
+                </a>
+
+                <div class="flex items-center gap-4 p-3 -mx-3">
+                  <div
+                    class="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shrink-0"
+                  >
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p
+                      class="text-white/60 text-sm font-medium uppercase tracking-wider"
+                    >
+                      Head Office
+                    </p>
+                    <p class="text-xl font-bold">London, UK</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Why Choose Us */}
+            <div class="space-y-6">
+              <h3 class="typo-2xl font-bold">Why Choose London Scaffolding?</h3>
+              <ul class="space-y-4">
+                {
+                  features.map((item) => (
+                    <li class="flex items-center gap-3 text-lg font-medium">
+                      <CheckCircle2 className="w-6 h-6 text-accent shrink-0" />
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            {/* Trust Badge Placeholder */}
+            <div
+              class="bg-white/5 rounded-2xl p-6 text-center border border-white/10"
+            >
+              <p class="text-white/80 italic">
+                "Excellent service from start to finish. The team was
+                professional, punctual, and the scaffolding was secure and top
+                quality."
+              </p>
+              <div class="mt-4 font-bold text-accent">
+                - Sarah Jenkins, South London
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Quote Form */}
+          <div class="lg:col-span-7">
+            <QuoteForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
