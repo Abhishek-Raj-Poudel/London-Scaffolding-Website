@@ -1,8 +1,9 @@
+import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Send } from "lucide-react";
+import { Phone, Send, Check } from "lucide-react";
 
 interface CTAProps {
   title?: string;
@@ -19,6 +20,55 @@ export const CTA = ({
   phoneText = "020 8XXX XXXX",
   id,
 }: CTAProps) => {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isSuccess, setIsSuccess] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xwvqwbel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+        setTimeout(() => setIsSuccess(false), 5000);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
   return (
     <section id={id} className="bg-primary text-white py-24">
       <div className="wrapper">
@@ -62,7 +112,7 @@ export const CTA = ({
               Fill out the form below and we'll get back to you within 2 hours.
             </p>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label
@@ -73,7 +123,11 @@ export const CTA = ({
                   </Label>
                   <Input
                     id="name"
+                    name="name"
+                    required
                     placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="h-12 rounded-xl border-slate-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
@@ -86,8 +140,12 @@ export const CTA = ({
                   </Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
+                    required
                     placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="h-12 rounded-xl border-slate-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
@@ -103,7 +161,11 @@ export const CTA = ({
                   </Label>
                   <Input
                     id="phone"
+                    name="phone"
+                    required
                     placeholder="020 8XXX XXXX"
+                    value={formData.phone}
+                    onChange={handleChange}
                     className="h-12 rounded-xl border-slate-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
@@ -116,7 +178,11 @@ export const CTA = ({
                   </Label>
                   <Input
                     id="service"
+                    name="service"
+                    required
                     placeholder="e.g. Domestic"
+                    value={formData.service}
+                    onChange={handleChange}
                     className="h-12 rounded-xl border-slate-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
@@ -131,17 +197,37 @@ export const CTA = ({
                 </Label>
                 <Textarea
                   id="message"
+                  name="message"
+                  required
                   placeholder="Tell us about your project..."
+                  value={formData.message}
+                  onChange={handleChange}
                   className="min-h-[120px] rounded-xl border-slate-200 focus:border-primary focus:ring-primary/20 resize-none"
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full h-14 rounded-full bg-primary text-white font-bold typo-base hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group"
+                disabled={isSubmitting}
+                className={`w-full h-14 rounded-full font-bold typo-base transition-all shadow-lg flex items-center justify-center gap-2 group ${
+                  isSuccess
+                    ? "bg-green-600 hover:bg-green-700 shadow-green-200"
+                    : "bg-primary hover:bg-primary/90 shadow-primary/20"
+                }`}
               >
-                {buttonText}
-                <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                {isSubmitting ? (
+                  "Sending..."
+                ) : isSuccess ? (
+                  <>
+                    <Check className="w-5 h-5" />
+                    Sent Successfully
+                  </>
+                ) : (
+                  <>
+                    {buttonText}
+                    <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </>
+                )}
               </Button>
             </form>
           </div>

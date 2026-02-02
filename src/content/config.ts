@@ -1,12 +1,14 @@
 import { defineCollection, z } from 'astro:content';
+// Force refresh
 
 const services = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
+    gallery: z.array(image()).optional(),
     faqs: z.array(z.object({
       question: z.string(),
       answer: z.string(),

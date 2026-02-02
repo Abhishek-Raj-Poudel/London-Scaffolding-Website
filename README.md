@@ -158,6 +158,15 @@ To add a new question to the FAQ page:
     We accept bank transfers and major credit cards. A deposit is required...
     ```
 
+### 7. Contact Form Configuration
+
+The website uses **Formspree** to handle form submissions.
+
+- **Form ID**: To update the form destination, search for `https://formspree.io/f/xwvqwbel` in the codebase and replace it with your own Formspree ID.
+- **Affected Files**:
+  - `src/components/ContactForm.tsx`
+  - `src/components/CTA.tsx`
+
 ---
 
 ## 🔍 SEO Configuration

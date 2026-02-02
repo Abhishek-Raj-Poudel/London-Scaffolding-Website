@@ -71,24 +71,39 @@ export function ContactForm() {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    console.log("Form submitted:", formData);
-    setSubmitSuccess(true);
-    setIsSubmitting(false);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        serviceType: "",
-        message: "",
+    try {
+      const response = await fetch("https://formspree.io/f/xwvqwbel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      setSubmitSuccess(false);
-    }, 3000);
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          serviceType: "",
+          message: "",
+        });
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        const data = await response.json();
+        setErrors({
+          submit: data.error || "An error occurred. Please try again.",
+        });
+      }
+    } catch (error) {
+      setErrors({
+        submit: "Failed to connect to the server. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -114,6 +129,7 @@ export function ContactForm() {
               <Label htmlFor="name">Full Name *</Label>
               <Input
                 id="name"
+                name="name"
                 placeholder="John Smith"
                 value={formData.name}
                 onChange={(e) => handleChange("name", e.target.value)}
@@ -128,6 +144,7 @@ export function ContactForm() {
               <Label htmlFor="email">Email Address *</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="john@example.com"
                 value={formData.email}
@@ -143,6 +160,7 @@ export function ContactForm() {
               <Label htmlFor="phone">Phone Number *</Label>
               <Input
                 id="phone"
+                name="phone"
                 type="tel"
                 placeholder="020 XXXX XXXX"
                 value={formData.phone}
@@ -162,6 +180,7 @@ export function ContactForm() {
               >
                 <SelectTrigger
                   id="serviceType"
+                  name="serviceType"
                   className={errors.serviceType ? "border-red-500" : ""}
                 >
                   <SelectValue placeholder="Select a service" />
@@ -198,6 +217,7 @@ export function ContactForm() {
             <Label htmlFor="message">Message *</Label>
             <Textarea
               id="message"
+              name="message"
               placeholder="Tell us about your project requirements..."
               rows={6}
               value={formData.message}
@@ -214,6 +234,12 @@ export function ContactForm() {
               <p className="text-green-800 font-medium">
                 ✓ Thank you! Your message has been sent successfully.
               </p>
+            </div>
+          )}
+
+          {errors.submit && (
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800 font-medium">{errors.submit}</p>
             </div>
           )}
 

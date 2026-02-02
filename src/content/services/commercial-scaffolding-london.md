@@ -10,6 +10,10 @@ faqs:
     answer: "Absolutely. All our operatives are CITB trained, CISRS registered, and regularly updated on the latest industry safety standards."
   - question: "Can you provide scaffolding during out-of-office hours?"
     answer: "Yes, we offer flexible scheduling to minimize disruption to your business operations, including evening and weekend installations."
+gallery:
+  - "../../assets/hero-scaffolding.png"
+  - "../../assets/london-areas.png"
+  - "../../assets/hero-scaffolding.png"
 ---
 
 ## Comprehensive Commercial Scaffolding Solutions in London

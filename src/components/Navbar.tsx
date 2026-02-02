@@ -186,22 +186,6 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Projects Link */}
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/projects"
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-white/10 transition-colors duration-300",
-                    isScrolled
-                      ? "text-slate-900"
-                      : "text-white hover:text-white",
-                  )}
-                >
-                  Projects
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
               {/* Resources Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger
@@ -225,6 +209,22 @@ export function Navbar() {
                     ))}
                   </ul>
                 </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Projects Link */}
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="/projects"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent hover:bg-white/10 transition-colors duration-300",
+                    isScrolled
+                      ? "text-slate-900"
+                      : "text-white hover:text-white",
+                  )}
+                >
+                  Projects
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* About Link */}
