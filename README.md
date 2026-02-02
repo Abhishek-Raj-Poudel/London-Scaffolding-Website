@@ -96,7 +96,66 @@ To create a landing page for a specific location:
 
     # Scaffolding Services in Croydon
 
-    Tailored content for this specific location.
+    tailored content for this specific location.
+    ```
+
+### 4. Adding a Blog Post
+
+To publish a new blog article:
+
+1.  Create a new file in `src/content/blogs/` (e.g., `winter-maintenance.md`).
+2.  Add the frontmatter:
+
+    ```markdown
+    ---
+    title: "Winter Scaffolding Maintenance"
+    description: "Tips for keeping your scaffold safe during winter months."
+    pubDate: 2024-02-15
+    author: "Safety Team"
+    tags: ["maintenance", "winter", "safety"]
+    image: "../../assets/blog/winter-scaffold.jpg" # Optional
+    ---
+
+    # Winter Safety Tips
+
+    Write your article content here...
+    ```
+
+### 5. Adding a Guide
+
+To create a new informational guide:
+
+1.  Create a new file in `src/content/guides/` (e.g., `permit-guide.md`).
+2.  Add the frontmatter:
+
+    ```markdown
+    ---
+    title: "Guide to Scaffolding Permits"
+    description: "Everything you need to know about council permits."
+    pubDate: 2024-01-20
+    author: "Admin Team"
+    ---
+
+    # Understanding Permits
+
+    Write your guide content here...
+    ```
+
+### 6. Adding a FAQ
+
+To add a new question to the FAQ page:
+
+1.  Create a new file in `src/content/faqs/` (e.g., `payment-terms.md`).
+2.  Add the frontmatter:
+
+    ```markdown
+    ---
+    question: "What are your payment terms?"
+    category: "Billing"
+    order: 3
+    ---
+
+    We accept bank transfers and major credit cards. A deposit is required...
     ```
 
 ---

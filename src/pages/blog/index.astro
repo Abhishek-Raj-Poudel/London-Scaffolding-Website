@@ -1,0 +1,90 @@
+---
+import Main from "@/layouts/main.astro";
+import { getCollection } from "astro:content";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+
+const posts = (await getCollection("blogs")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Main
+  content={{
+    title: "Scaffolding Blog | London Scaffolding",
+    description:
+      "Latest news, safety tips, and updates from London Scaffolding.",
+  }}
+>
+  <section class="bg-primary text-white py-20">
+    <div class="wrapper text-center">
+      <h1 class="typo-5xl mb-6">Our Blog</h1>
+      <p class="typo-xl text-white/90 max-w-2xl mx-auto">
+        Stay up to date with the latest industry news, safety guidelines, and
+        company updates.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-muted/30">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          posts.map((post) => (
+            <Card className="bg-white border-slate-200 h-full flex flex-col shadow-none overflow-hidden group pt-0 gap-0 hover:shadow-lg transition-shadow duration-300">
+              <div class="relative h-64 lg:h-80 overflow-hidden">
+                {post.data.image ? (
+                  <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                    <span class="typo-sm">No Image</span>
+                  </div>
+                )}
+                <div class="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                  {post.data.pubDate.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </div>
+              </div>
+              <CardContent className="p-8 grow flex flex-col gap-4">
+                <h3 class="typo-xl font-bold group-hover:text-primary transition-colors">
+                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                </h3>
+                <p class="typo-base text-muted-foreground leading-relaxed line-clamp-3">
+                  {post.data.description}
+                </p>
+              </CardContent>
+              <div class="px-8 pb-8 pt-0 mt-auto">
+                <Button
+                  asChild
+                  variant="link"
+                  className="p-0 text-primary font-bold hover:no-underline flex items-center gap-2 group/btn justify-start"
+                >
+                  <a href={`/blog/${post.slug}`}>
+                    Read Article
+                    <span class="group-hover/btn:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </a>
+                </Button>
+              </div>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Main>

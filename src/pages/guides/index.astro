@@ -1,0 +1,55 @@
+---
+import Main from "@/layouts/main.astro";
+import { getCollection } from "astro:content";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+const guides = (await getCollection("guides")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Main
+  content={{
+    title: "Scaffolding Guides | London Scaffolding",
+    description: "Expert guides and advice for homeowners and developers.",
+  }}
+>
+  <section class="bg-primary text-white py-20">
+    <div class="wrapper text-center">
+      <h1 class="typo-5xl mb-6">Expert Guides</h1>
+      <p class="typo-xl text-white/90 max-w-2xl mx-auto">
+        Everything you need to know about scaffolding, permits, and planning
+        your project.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-muted/30">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          guides.map((guide) => (
+            <Card className="bg-white hover:shadow-lg transition-all h-full flex flex-col">
+              <CardHeader>
+                <CardTitle className="typo-xl mb-2 group-hover:text-primary transition-colors">
+                  <a href={`/guides/${guide.slug}`}>{guide.data.title}</a>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col grow">
+                <p class="text-muted-foreground mb-6 line-clamp-3">
+                  {guide.data.description}
+                </p>
+                <div class="mt-auto">
+                  <Button asChild variant="secondary" className="w-full">
+                    <a href={`/guides/${guide.slug}`}>View Guide</a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Main>

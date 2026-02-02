@@ -1,0 +1,36 @@
+---
+import Main from "@/layouts/main.astro";
+import { getCollection } from "astro:content";
+import { FAQList } from "@/components/FAQList";
+
+const faqs = await getCollection("faqs");
+const formattedFaqs = faqs.map((faq) => ({
+  question: faq.data.question,
+  answer: faq.body,
+  category: faq.data.category,
+}));
+---
+
+<Main
+  content={{
+    title: "Frequently Asked Questions | London Scaffolding",
+    description:
+      "Answers to common questions about our scaffolding services and policies.",
+  }}
+>
+  <section class="bg-primary text-white py-20">
+    <div class="wrapper text-center">
+      <h1 class="typo-5xl mb-6">Frequently Asked Questions</h1>
+      <p class="typo-xl text-white/90 max-w-2xl mx-auto">
+        Find answers to common questions about our services, pricing, and safety
+        protocols.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-muted/30">
+    <div class="wrapper">
+      <FAQList items={formattedFaqs} client:load />
+    </div>
+  </section>
+</Main>

@@ -5,12 +5,10 @@ import { ServiceCarousel } from "@/components/ServiceCarousel";
 import { TrustBar } from "@/components/TrustBar";
 import { ProjectSlider } from "@/components/ProjectSlider";
 import { HomeFAQ } from "@/components/HomeFAQ";
-import { FAQ } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -100,8 +98,9 @@ const testimonials = [
         <Image
           src={heroImage}
           alt="Scaffolding Company in London"
-          class="w-full h-auto object-cover max-h-[600px] hover:scale-105 transition-transform duration-700"
+          class="w-full h-auto object-cover max-h-125 hover:scale-105 transition-transform duration-700"
           loading="eager"
+          fetchpriority="high"
         />
       </div>
     </div>
@@ -132,7 +131,7 @@ const testimonials = [
           <Image
             src={areasImage}
             alt="Scaffolding coverage across London"
-            class="w-full h-[500px] lg:h-[700px] object-cover hover:scale-105 transition-transform duration-700"
+            class="w-full h-125 lg:h-175 object-cover hover:scale-105 transition-transform duration-700"
           />
           <div
             class="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl"

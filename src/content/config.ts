@@ -59,8 +59,47 @@ const projects = defineCollection({
   }),
 });
 
+const blogs = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    author: z.string().default('London Scaffolding'),
+    image: image().optional(),
+    tags: z.array(z.string()).optional(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+  }),
+});
+
+const guides = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    author: z.string().default('London Scaffolding'),
+    image: image().optional(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+  }),
+});
+
+const faqs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    question: z.string(),
+    category: z.string().default('General'),
+    order: z.number().default(0),
+  }),
+});
+
 export const collections = {
   'services': services,
   'areas': areas,
   'projects': projects,
+  'blogs': blogs,
+  'guides': guides,
+  'faqs': faqs,
 };

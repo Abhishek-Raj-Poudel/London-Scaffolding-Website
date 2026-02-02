@@ -1,0 +1,91 @@
+---
+import Main from "@/layouts/main.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((guide) => ({
+    params: { slug: guide.slug },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content, headings } = await guide.render();
+const tocHeadings = headings.filter((h) => h.depth <= 3);
+---
+
+<Main
+  content={{
+    title: `${guide.data.title} | London Scaffolding`,
+    description: guide.data.description,
+  }}
+>
+  {/* Hero Section */}
+  <section class="bg-primary text-white py-20 border-b border-white/10">
+    <div class="wrapper">
+      <div class="max-w-4xl flex flex-col gap-6">
+        <div class="text-white/60 text-sm font-bold uppercase tracking-widest">
+          Expert Guide
+        </div>
+        <h1 class="typo-5xl">{guide.data.title}</h1>
+        <p class="typo-xl text-white/90 leading-relaxed">
+          {guide.data.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Main Content */}
+  <section class="py-20">
+    <div class="wrapper grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2 prose prose-slate max-w-none">
+        <Content />
+      </div>
+
+      {/* Sidebar / Table of Contents */}
+      <aside class="space-y-8 h-fit sticky top-24">
+        <div class="bg-muted/30 p-8 rounded-2xl">
+          <h3 class="typo-xl font-bold mb-4">Table of Contents</h3>
+          <ul class="space-y-3">
+            {
+              tocHeadings.length > 0 ? (
+                tocHeadings.map((h) => (
+                  <li
+                    class={`text-sm transition-colors hover:text-primary ${h.depth === 3 ? "pl-4 text-muted-foreground" : "text-slate-700 font-medium"}`}
+                  >
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))
+              ) : (
+                <li class="text-sm text-muted-foreground italic">
+                  No subsections in this guide.
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Main>
+
+<style is:global>
+  @reference "../../styles/global.css";
+
+  .prose h2 {
+    @apply typo-3xl mt-12 mb-6 scroll-mt-24;
+  }
+  .prose h3 {
+    @apply typo-2xl mt-8 mb-4 scroll-mt-24;
+  }
+  .prose p {
+    @apply typo-lg leading-relaxed mb-6;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-6 space-y-2 typo-lg;
+  }
+  .prose li {
+    @apply marker:text-primary;
+  }
+</style>
