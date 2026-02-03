@@ -68,18 +68,58 @@ const services = [
 ];
 
 const areas = [
-  { title: "North London", href: "/areas/north-london-scaffolding" },
-  { title: "South London", href: "/areas/south-london-scaffolding" },
-  { title: "East London", href: "/areas/east-london-scaffolding" },
-  { title: "West London", href: "/areas/west-london-scaffolding" },
-  { title: "Central London", href: "/areas/central-london-scaffolding" },
-  { title: "All Areas", href: "/areas-we-cover" },
+  {
+    title: "North London",
+    href: "/areas/north-london-scaffolding",
+    description: "Serving Barnet, Enfield, Haringey, and surrounding areas.",
+  },
+  {
+    title: "South London",
+    href: "/areas/south-london-scaffolding",
+    description: "Reliable scaffolding for Croydon, Bromley, and Southwark.",
+  },
+  {
+    title: "East London",
+    href: "/areas/east-london-scaffolding",
+    description: "Expert solutions for Hackney, Newham, and Tower Hamlets.",
+  },
+  {
+    title: "West London",
+    href: "/areas/west-london-scaffolding",
+    description: "Quality access for Brent, Ealing, and Hammersmith.",
+  },
+  {
+    title: "Central London",
+    href: "/areas/central-london-scaffolding",
+    description:
+      "Professional scaffolding in the heart of the City and West End.",
+  },
+  {
+    title: "All Areas",
+    href: "/areas-we-cover",
+    description:
+      "View our comprehensive coverage across all 32 London boroughs.",
+  },
 ];
 
 const resources = [
-  { title: "Blog", href: "/blog" },
-  { title: "Guides", href: "/guides" },
-  { title: "FAQs", href: "/faqs" },
+  {
+    title: "Blog",
+    href: "/blog",
+    description:
+      "Stay updated with the latest scaffolding industry news and tips.",
+  },
+  {
+    title: "Guides",
+    href: "/guides",
+    description:
+      "Comprehensive safety and project planning guides for our clients.",
+  },
+  {
+    title: "FAQs",
+    href: "/faqs",
+    description: "Find answers to commonly asked questions about our services.",
+  },
 ];
 
 const navLinks = [
@@ -108,7 +148,7 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300 border-b",
         isScrolled
-          ? "bg-white border-slate-200 py-2 shadow-sm"
+          ? "bg-white border-slate-200 py-2 "
           : "bg-primary border-primary/10 py-4",
       )}
     >
@@ -174,13 +214,15 @@ export function Navbar() {
                   Areas We Cover
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-3 p-4 md:w-[300px]">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {areas.map((area) => (
                       <ListItem
                         key={area.title}
                         title={area.title}
                         href={area.href}
-                      />
+                      >
+                        {area.description}
+                      </ListItem>
                     ))}
                   </ul>
                 </NavigationMenuContent>
@@ -199,13 +241,15 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-3 p-4 md:w-[300px]">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {resources.map((resource) => (
                       <ListItem
                         key={resource.title}
                         title={resource.title}
                         href={resource.href}
-                      />
+                      >
+                        {resource.description}
+                      </ListItem>
                     ))}
                   </ul>
                 </NavigationMenuContent>
