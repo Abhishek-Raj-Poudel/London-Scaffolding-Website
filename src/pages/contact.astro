@@ -13,120 +13,111 @@ const officeMapUrl =
   {/* Hero Section */}
   <section class="bg-primary text-white py-20 border-b border-white/10">
     <div class="wrapper">
-      <div class="max-w-4xl flex flex-col gap-6">
+      <div class="flex flex-col gap-6">
         <h1 class="typo-5xl">Get in Touch</h1>
-        <p class="typo-xl text-white/90 leading-relaxed">
+        <p class="typo-xl text-white/90 leading-relaxed max-w-4xl">
           Ready to start your scaffolding project? Our expert team is here to
           help. Contact us today for a free, no-obligation quote.
         </p>
-      </div>
-    </div>
-  </section>
-
-  {/* Contact Information Section */}
-  <section class="py-20 bg-slate-50">
-    <div class="wrapper">
-      <div class="text-center mb-12">
-        <h2 class="typo-4xl font-bold mb-4">Contact Information</h2>
-        <p class="typo-lg text-muted-foreground max-w-2xl mx-auto">
-          Reach out to us through any of the following channels
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Phone */}
         <div
-          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-neutral-800"
         >
+          {/* Phone */}
           <div
-            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
           >
-            <Phone className="w-6 h-6 text-primary" />
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <Phone className="w-6 h-6 text-primary" />
+            </div>
+            <h3 class="typo-xl font-bold mb-2">Phone</h3>
+            <a
+              href="tel:02012345678"
+              class="typo-base text-primary hover:underline"
+            >
+              020 1234 5678
+            </a>
+            <p class="typo-sm text-muted-foreground mt-1">
+              24/7 Emergency Line
+            </p>
           </div>
-          <h3 class="typo-xl font-bold mb-2">Phone</h3>
-          <a
-            href="tel:02012345678"
-            class="typo-base text-primary hover:underline"
-          >
-            020 1234 5678
-          </a>
-          <p class="typo-sm text-muted-foreground mt-1">24/7 Emergency Line</p>
-        </div>
 
-        {/* Email */}
-        <div
-          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
-        >
+          {/* Email */}
           <div
-            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
           >
-            <Mail className="w-6 h-6 text-primary" />
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <Mail className="w-6 h-6 text-primary" />
+            </div>
+            <h3 class="typo-xl font-bold mb-2">Email</h3>
+            <a
+              href="mailto:info@londonscaffolding.co.uk"
+              class="typo-base text-primary hover:underline break-all"
+            >
+              info@londonscaffolding.co.uk
+            </a>
+            <p class="typo-sm text-muted-foreground mt-1">
+              We reply within 24 hours
+            </p>
           </div>
-          <h3 class="typo-xl font-bold mb-2">Email</h3>
-          <a
-            href="mailto:info@londonscaffolding.co.uk"
-            class="typo-base text-primary hover:underline break-all"
-          >
-            info@londonscaffolding.co.uk
-          </a>
-          <p class="typo-sm text-muted-foreground mt-1">
-            We reply within 24 hours
-          </p>
-        </div>
 
-        {/* Address */}
-        <div
-          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
-        >
+          {/* Address */}
           <div
-            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors text-neutral-800"
           >
-            <MapPin className="w-6 h-6 text-primary" />
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <MapPin className="w-6 h-6 text-primary" />
+            </div>
+            <h3 class="typo-xl font-bold mb-2">Address</h3>
+            <p class="typo-base">
+              123 Scaffold Street<br />
+              London, E1 6AN
+            </p>
           </div>
-          <h3 class="typo-xl font-bold mb-2">Address</h3>
-          <p class="typo-base">
-            123 Scaffold Street<br />
-            London, E1 6AN
-          </p>
-        </div>
 
-        {/* Business Hours */}
-        <div
-          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
-        >
+          {/* Business Hours */}
           <div
-            class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
           >
-            <Clock className="w-6 h-6 text-primary" />
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <Clock className="w-6 h-6 text-primary" />
+            </div>
+            <h3 class="typo-xl font-bold mb-2">Business Hours</h3>
+            <p class="typo-base">
+              Mon - Fri: 7am - 6pm<br />
+              Sat: 8am - 4pm<br />
+              Sun: Emergency Only
+            </p>
           </div>
-          <h3 class="typo-xl font-bold mb-2">Business Hours</h3>
-          <p class="typo-base">
-            Mon - Fri: 7am - 6pm<br />
-            Sat: 8am - 4pm<br />
-            Sun: Emergency Only
-          </p>
         </div>
       </div>
     </div>
-  </section>
 
-  {/* Office Locator Section */}
-  <section class="">
-    <LocalMap
-      embedUrl={officeMapUrl}
-      title="London Scaffolding Office Location"
+    {/* Office Locator Section */}
+    <section class="">
+      <LocalMap
+        embedUrl={officeMapUrl}
+        title="London Scaffolding Office Location"
+      />
+    </section>
+
+    {/* Contact Form Section */}
+    <CTA
+      title="Ready for a safe, reliable scaffolding solution?"
+      description="Contact London's premier scaffolding company today for a free site assessment and no-obligation quote."
+      buttonText="Request Your Free Quote"
+      id="quote"
     />
   </section>
 
-  {/* Contact Form Section */}
-  <CTA
-    title="Ready for a safe, reliable scaffolding solution?"
-    description="Contact London's premier scaffolding company today for a free site assessment and no-obligation quote."
-    buttonText="Request Your Free Quote"
-    id="quote"
-  />
+  <style is:global>
+    @reference "../styles/global.css";
+  </style>
 </MainLayout>
-
-<style is:global>
-  @reference "../styles/global.css";
-</style>
