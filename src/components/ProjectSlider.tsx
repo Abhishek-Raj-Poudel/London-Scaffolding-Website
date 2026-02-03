@@ -82,6 +82,7 @@ export function ProjectSlider() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
                   />
                   <div className="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
                     {project.location}

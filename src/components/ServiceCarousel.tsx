@@ -70,6 +70,7 @@ export function ServiceCarousel({ services }: ServiceCarouselProps) {
                       src={service.image || fallbacks[index % fallbacks.length]}
                       alt={service.title}
                       className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 rounded-md"
+                      loading="lazy"
                     />
                   </CardFooter>
                 </Card>

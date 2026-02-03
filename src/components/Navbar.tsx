@@ -166,6 +166,7 @@ export function Navbar() {
               src={logo.src}
               alt="Logo"
               className={cn("h-10", isScrolled ? "" : "brightness-0 invert")}
+              loading="lazy"
             />
           </a>
         </div>
