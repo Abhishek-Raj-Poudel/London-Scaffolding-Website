@@ -44,7 +44,7 @@ export function HomeFAQ() {
           </p>
         </div>
 
-        <div className="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm space-y-4">
+        <div className="p-8 bg-white border border-slate-100 rounded-3xl space-y-4">
           <h4 className="font-bold typo-base">Still have questions?</h4>
           <p className="text-muted-foreground text-sm">
             Our team is available 24/7 to provide expert advice on your specific
@@ -65,7 +65,7 @@ export function HomeFAQ() {
           <AccordionItem
             key={index}
             value={`item-${index}`}
-            className="border border-slate-200 rounded-2xl bg-white px-8 transition-all data-[state=open]:border-primary/30 data-[state=open]:shadow-lg"
+            className="border border-slate-200 rounded-2xl bg-white px-8 transition-all data-[state=open]:border-primary/30"
           >
             <AccordionTrigger className="hover:no-underline py-6 group">
               <span className="text-left font-bold typo-xl group-data-[state=open]:text-primary transition-colors">

@@ -361,7 +361,7 @@ export const CTA = ({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full h-14 rounded-full font-bold typo-base text-white transition-all shadow-lg flex items-center justify-center gap-2 group `}
+                className={`w-full h-14 rounded-full font-bold typo-base text-white transition-all flex items-center justify-center gap-2 group `}
               >
                 {isSubmitting ? (
                   "Sending..."

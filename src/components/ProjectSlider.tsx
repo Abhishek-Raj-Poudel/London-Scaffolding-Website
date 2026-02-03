@@ -22,6 +22,7 @@ interface ProjectSliderProps {
 }
 
 export function ProjectSlider({ projects }: ProjectSliderProps) {
+  if (!projects) return null;
   return (
     <div className="w-full relative mt-12 mb-20 px-0">
       <Carousel
@@ -46,7 +47,7 @@ export function ProjectSlider({ projects }: ProjectSliderProps) {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                    <div className="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
                       {project.location}
                     </div>
                   </div>

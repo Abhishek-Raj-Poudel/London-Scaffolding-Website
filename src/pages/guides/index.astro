@@ -30,7 +30,7 @@ const guides = (await getCollection("guides")).sort(
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           guides.map((guide) => (
-            <Card className="bg-white hover:shadow-lg transition-all h-full flex flex-col">
+            <Card className="bg-white transition-all h-full flex flex-col">
               <CardHeader>
                 <CardTitle className="typo-xl mb-2 group-hover:text-primary transition-colors">
                   <a href={`/guides/${guide.slug}`}>{guide.data.title}</a>

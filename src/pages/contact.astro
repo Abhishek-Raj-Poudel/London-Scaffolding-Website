@@ -36,7 +36,7 @@ const officeMapUrl =
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Phone */}
         <div
-          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
         >
           <div
             class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
@@ -55,7 +55,7 @@ const officeMapUrl =
 
         {/* Email */}
         <div
-          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
         >
           <div
             class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
@@ -76,7 +76,7 @@ const officeMapUrl =
 
         {/* Address */}
         <div
-          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
         >
           <div
             class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
@@ -92,7 +92,7 @@ const officeMapUrl =
 
         {/* Business Hours */}
         <div
-          class="bg-white p-8 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-primary transition-colors"
+          class="bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-primary transition-colors"
         >
           <div
             class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
@@ -111,22 +111,11 @@ const officeMapUrl =
   </section>
 
   {/* Office Locator Section */}
-  <section class="py-20">
-    <div class="wrapper">
-      <div class="text-center mb-12">
-        <h2 class="typo-4xl font-bold mb-4">Find Our Office</h2>
-        <p class="typo-lg text-muted-foreground max-w-2xl mx-auto">
-          Visit us at our London headquarters
-        </p>
-      </div>
-
-      <div class="max-w-5xl mx-auto">
-        <LocalMap
-          embedUrl={officeMapUrl}
-          title="London Scaffolding Office Location"
-        />
-      </div>
-    </div>
+  <section class="">
+    <LocalMap
+      embedUrl={officeMapUrl}
+      title="London Scaffolding Office Location"
+    />
   </section>
 
   {/* Contact Form Section */}

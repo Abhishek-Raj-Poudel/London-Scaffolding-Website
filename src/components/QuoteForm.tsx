@@ -129,7 +129,7 @@ export function QuoteForm() {
   };
 
   return (
-    <Card className="border-0 shadow-2xl rounded-3xl overflow-hidden">
+    <Card className="border-0 rounded-3xl overflow-hidden">
       <CardHeader className="bg-slate-50 border-b p-8">
         <CardTitle className="typo-3xl">Request a Quote</CardTitle>
         <CardDescription className="typo-base mt-2">
@@ -339,7 +339,7 @@ export function QuoteForm() {
           <Button
             type="submit"
             size="lg"
-            className="w-full h-14 rounded-full font-bold typo-base text-white transition-all shadow-lg flex items-center justify-center gap-2 group "
+            className="w-full h-14 rounded-full font-bold typo-base text-white transition-all flex items-center justify-center gap-2 group "
             disabled={isSubmitting}
           >
             {isSubmitting ? (

@@ -34,7 +34,7 @@ const areas = await getCollection("areas");
           areas.map((area) => (
             <a
               href={`/areas/${area.slug}`}
-              class="group border rounded-3xl p-8 hover:border-primary transition-all duration-300 bg-white hover:shadow-2xl hover:-translate-y-1 block"
+              class="group border rounded-3xl p-8 hover:border-primary transition-all duration-300 bg-white hover:-translate-y-1 block"
             >
               <h3 class="typo-2xl font-bold mb-4 group-hover:text-primary transition-colors">
                 {area.data.title}

@@ -38,7 +38,7 @@ const posts = (await getCollection("blogs")).sort(
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           posts.map((post) => (
-            <Card className="bg-white border-slate-200 h-full flex flex-col shadow-none overflow-hidden group pt-0 gap-0 hover:shadow-lg transition-shadow duration-300">
+            <Card className="bg-white border-slate-200 h-full flex flex-col shadow-none overflow-hidden group pt-0 gap-0 transition-shadow duration-300">
               <div class="relative h-64 lg:h-80 overflow-hidden">
                 {post.data.image ? (
                   <Image
@@ -51,7 +51,7 @@ const posts = (await getCollection("blogs")).sort(
                     <span class="typo-sm">No Image</span>
                   </div>
                 )}
-                <div class="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                <div class="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
                   {post.data.pubDate.toLocaleDateString("en-GB", {
                     day: "numeric",
                     month: "short",

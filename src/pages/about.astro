@@ -1,5 +1,7 @@
 ---
 import MainLayout from "../layouts/main.astro";
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 import heroImage from "@/assets/hero-scaffolding.png";
 import { ProjectSlider } from "@/components/ProjectSlider";
 import { CTA } from "@/components/CTA";
@@ -13,6 +15,24 @@ const stats = [
   { value: "15+", label: "Years Experience" },
   { value: "24/7", label: "Support Available" },
 ];
+
+// Fetch and optimize projects
+const allProjects = await getCollection("projects");
+const projectsWithOptimizedImages = await Promise.all(
+  allProjects.map(async (project) => {
+    const optimizedImage = await getImage({
+      src: project.data.image,
+      format: "webp",
+    });
+    return {
+      title: project.data.title,
+      description: project.data.description,
+      location: project.data.location,
+      image: optimizedImage.src,
+      slug: project.slug,
+    };
+  }),
+);
 ---
 
 <MainLayout
@@ -155,7 +175,7 @@ const stats = [
         </div>
       </div>
 
-      <ProjectSlider client:load />
+      <ProjectSlider projects={projectsWithOptimizedImages} client:load />
     </div>
   </section>
 

@@ -41,7 +41,7 @@ export function FAQList({ items }: FAQListProps) {
               <AccordionItem
                 key={index}
                 value={`${category}-${index}`}
-                className="border border-slate-200 rounded-2xl bg-white px-8 transition-all data-[state=open]:border-primary/30 data-[state=open]:shadow-lg"
+                className="border border-slate-200 rounded-2xl bg-white px-8 transition-all data-[state=open]:border-primary/30 "
               >
                 <AccordionTrigger className="hover:no-underline py-6 group">
                   <span className="text-left font-bold text-lg group-data-[state=open]:text-primary transition-colors">
