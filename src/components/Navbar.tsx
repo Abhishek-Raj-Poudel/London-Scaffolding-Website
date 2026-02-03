@@ -11,8 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-import logo from "@/assets/logo.png";
-
 import {
   Sheet,
   SheetContent,
@@ -21,7 +19,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { getImage } from "astro/assets";
 
 const services = [
   {
@@ -132,7 +129,11 @@ const navLinks = [
   { title: "Contact", href: "/contact" },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  logoUrl: string;
+}
+
+export function Navbar({ logoUrl }: NavbarProps) {
   const [isScrolled, setIsScrolled] = React.useState(false);
 
   React.useEffect(() => {
@@ -163,7 +164,7 @@ export function Navbar() {
             )}
           >
             <img
-              src={logo.src}
+              src={logoUrl}
               alt="Logo"
               className={cn("h-10", isScrolled ? "" : "brightness-0 invert")}
               loading="lazy"

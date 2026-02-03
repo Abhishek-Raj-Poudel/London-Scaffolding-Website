@@ -52,6 +52,11 @@ const projects = defineCollection({
     image: image(),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
+    gallery: z.array(image()).optional(),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional(),
     cta: z.object({
       title: z.string().default('Ready to start your project?'),
       description: z.string().default('Contact us today for a free, no-obligation scaffolding quote in London.'),

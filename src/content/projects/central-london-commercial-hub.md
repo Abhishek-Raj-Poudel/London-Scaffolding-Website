@@ -2,7 +2,19 @@
 title: "Central London Commercial Hub"
 description: "Multi-story complex scaffolding for a major office redevelopment in the City."
 location: "City of London"
-image: "../../assets/hero-scaffolding.png"
+image: "../../assets/Scaffolding1.jpeg"
+gallery:
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
+faqs:
+  - question: "What was the biggest challenge on this project?"
+    answer: "The project required complex scaffolding in a high-traffic urban environment, which meant careful planning for safety and logistical efficiency."
+  - question: "How long did the installation take?"
+    answer: "The initial phase of scaffolding installation took approximately two weeks, with subsequent adjustments made as the project progressed."
 ---
 
 ## Project Overview

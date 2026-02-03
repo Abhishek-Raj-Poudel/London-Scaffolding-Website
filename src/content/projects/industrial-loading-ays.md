@@ -2,7 +2,19 @@
 title: "Industrial Loading Bays"
 description: "Heavy-duty loading bay construction for a logistics facility expansion."
 location: "Barking"
-image: "../../assets/hero-scaffolding.png"
+image: "../../assets/scaffolding3.jpeg"
+gallery:
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
+faqs:
+  - question: "What weight capacity do these loading bays support?"
+    answer: "Our heavy-duty loading bays are designed to support standard industrial loads, typically up to 10kN/m², but can be customized for specific requirements."
+  - question: "How quickly can they be erected?"
+    answer: "Depending on the scale, most industrial loading bays can be fully installed within 3-5 working days."
 ---
 
 ## Project Overview

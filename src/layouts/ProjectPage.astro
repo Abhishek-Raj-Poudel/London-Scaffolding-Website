@@ -1,7 +1,16 @@
 ---
 import MainLayout from "./main.astro";
 import { CTA } from "@/components/CTA";
-import { Image } from "astro:assets";
+import { FAQ } from "@/components/FAQ";
+import { GalleryMasonry } from "@/components/GalleryMasonry";
+import { ServiceTabs } from "@/components/ServiceTabs";
+
+import Scaffolding1 from "@/assets/Scaffolding1.jpeg";
+import Scaffolding2 from "@/assets/Scaffolding2.jpeg";
+import Scaffolding3 from "@/assets/scaffolding3.jpeg";
+import Scaffolding4 from "@/assets/Scaffolding4.jpeg";
+import Scaffolding5 from "@/assets/Scaffolding5.jpeg";
+import Scaffolding6 from "@/assets/Scaffolding6.jpeg";
 
 interface Props {
   content: {
@@ -9,6 +18,8 @@ interface Props {
     description: string;
     location: string;
     image: any;
+    gallery?: any[];
+    faqs?: { question: string; answer: string }[];
     cta?: {
       title: string;
       description: string;
@@ -19,106 +30,142 @@ interface Props {
 }
 
 const { content } = Astro.props;
+
+// Prepare gallery images if they exist, otherwise use default ones
+const galleryImages = content.gallery?.length
+  ? content.gallery.map((img: any) => ({
+      src: img.src,
+      alt: `${content.title} Project`,
+    }))
+  : [
+      { src: Scaffolding1.src, alt: "Professional Scaffolding Project 1" },
+      { src: Scaffolding2.src, alt: "Professional Scaffolding Project 2" },
+      { src: Scaffolding3.src, alt: "Professional Scaffolding Project 3" },
+      { src: Scaffolding4.src, alt: "Professional Scaffolding Project 4" },
+      { src: Scaffolding5.src, alt: "Professional Scaffolding Project 5" },
+      { src: Scaffolding6.src, alt: "Professional Scaffolding Project 6" },
+    ];
+
+const tabs = [
+  { id: "overview", label: "Overview" },
+  { id: "gallery", label: "Gallery" },
+  ...(content.faqs ? [{ id: "faq", label: "FAQs" }] : []),
+  { id: "quote", label: "Get a Quote" },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: content.title,
+  description: content.description,
+  locationCreated: {
+    "@type": "Place",
+    name: content.location,
+  },
+};
 ---
 
 <MainLayout
   content={{
     title: content.title,
     description: content.description,
-    image: content.image.src,
+    schema: schema,
   }}
 >
-  {/* Project Hero Section */}
-  <section
-    class="bg-primary text-white py-24 border-b border-white/10 relative overflow-hidden"
-  >
-    <div class="absolute inset-0 opacity-10">
-      <Image src={content.image} alt="" class="w-full h-full object-cover" />
-    </div>
-    <div class="wrapper relative z-10">
+  {/* Hero Section */}
+  <section class="bg-primary text-white py-20 border-b border-white/10">
+    <div class="wrapper">
       <div class="max-w-4xl flex flex-col gap-6">
         <div class="flex items-center gap-3">
           <span
-            class="bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
+            class="bg-white/10 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-white/20"
           >
             {content.location}
           </span>
-          <span class="text-white/60 text-sm">Case Study</span>
         </div>
         <h1 class="typo-5xl">{content.title}</h1>
-        <p class="typo-xl text-white/90 leading-relaxed max-w-2xl">
+        <p class="typo-xl text-white/90 leading-relaxed">
           {content.description}
         </p>
+        <div class="flex gap-4 mt-4">
+          <a
+            href="#quote"
+            class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-white/90 transition-colors"
+          >
+            Get Instant Quote
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  {/* Project Content */}
-  <section class="py-20 lg:py-32">
-    <div class="wrapper">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-        {/* Main Content Area */}
-        <div class="lg:col-span-8 prose prose-slate max-w-none">
-          <div class="space-y-8">
-            <slot />
-          </div>
+  <ServiceTabs tabs={tabs} client:idle />
+
+  {/* Main Content */}
+  <section class="py-16">
+    <div class="wrapper grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2 prose prose-slate max-w-none">
+        <div id="overview" class="space-y-8 scroll-mt-32">
+          <slot />
         </div>
 
-        {/* Sidebar / Project Stats */}
-        <aside class="lg:col-span-4 space-y-12">
-          <div class="bg-muted p-10 rounded-3xl space-y-8">
-            <h3 class="typo-xl font-bold">Project Details</h3>
-            <div class="space-y-6">
-              <div>
-                <p
-                  class="text-sm text-muted-foreground uppercase tracking-wider font-bold mb-1"
-                >
-                  Location
-                </p>
-                <p class="typo-lg font-semibold">{content.location}</p>
-              </div>
-              <div>
-                <p
-                  class="text-sm text-muted-foreground uppercase tracking-wider font-bold mb-1"
-                >
-                  Service Type
-                </p>
-                <p class="typo-lg font-semibold">Professional Scaffolding</p>
-              </div>
-              <div>
-                <p
-                  class="text-sm text-muted-foreground uppercase tracking-wider font-bold mb-1"
-                >
-                  Status
-                </p>
-                <p class="typo-lg font-semibold flex items-center gap-2">
-                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                  Completed
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500"
-          >
-            <Image
-              src={content.image}
-              alt={content.title}
-              class="w-full h-auto object-cover aspect-square"
-            />
-          </div>
-        </aside>
+        {/* Gallery Section */}
+        <div id="gallery" class="pt-16 scroll-mt-32">
+          <h2 class="typo-3xl mb-8">Project Gallery</h2>
+          <GalleryMasonry images={galleryImages} client:load />
+        </div>
       </div>
+
+      <aside class="space-y-8 h-fit sticky top-32">
+        <div
+          class="bg-white border-2 border-slate-100 p-8 rounded-2xl shadow-sm"
+        >
+          <h3 class="typo-xl font-bold mb-4">Project Details</h3>
+          <dl class="space-y-4">
+            <div>
+              <dt
+                class="text-xs font-bold uppercase text-muted-foreground tracking-wider mb-1"
+              >
+                Location
+              </dt>
+              <dd class="typo-base font-medium">{content.location}</dd>
+            </div>
+            <div>
+              <dt
+                class="text-xs font-bold uppercase text-muted-foreground tracking-wider mb-1"
+              >
+                Status
+              </dt>
+              <dd class="typo-base font-medium">Completed</dd>
+            </div>
+            <div>
+              <dt
+                class="text-xs font-bold uppercase text-muted-foreground tracking-wider mb-1"
+              >
+                Sector
+              </dt>
+              <dd class="typo-base font-medium">Scaffolding</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
     </div>
   </section>
+
+  {/* FAQ Section */}
+  {
+    content.faqs && (
+      <section id="faq" class="scroll-mt-24">
+        <FAQ items={content.faqs} client:load />
+      </section>
+    )
+  }
 
   {/* CTA Section */}
   <CTA
-    title={content.cta?.title}
-    description={content.cta?.description}
-    buttonText={content.cta?.buttonText}
-    phoneText={content.cta?.phoneText}
+    title={content.cta?.title || "Ready to start your project?"}
+    description={content.cta?.description ||
+      "Contact us today for a free, no-obligation scaffolding quote."}
     id="quote"
   />
 </MainLayout>
@@ -128,18 +175,15 @@ const { content } = Astro.props;
 
   /* Markdown styling for the slot */
   .prose h2 {
-    @apply typo-3xl mt-12 mb-6 font-bold text-slate-900;
+    @apply typo-3xl mt-12 mb-6;
   }
   .prose h3 {
-    @apply typo-2xl mt-8 mb-4 font-bold text-slate-800;
+    @apply typo-2xl mt-8 mb-4;
   }
   .prose p {
-    @apply typo-lg leading-relaxed mb-6 text-slate-600;
+    @apply typo-lg leading-relaxed mb-6;
   }
   .prose ul {
-    @apply list-disc list-outside mb-6 space-y-3 typo-lg ml-6 text-slate-600;
-  }
-  .prose li::marker {
-    @apply text-primary;
+    @apply list-disc list-inside mb-6 space-y-2 typo-lg;
   }
 </style>

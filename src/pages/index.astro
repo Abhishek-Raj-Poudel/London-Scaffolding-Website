@@ -1,6 +1,7 @@
 ---
 import Main from "../layouts/main.astro";
 import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 import { ServiceCarousel } from "@/components/ServiceCarousel";
 import { TrustBar } from "@/components/TrustBar";
 import { ProjectSlider } from "@/components/ProjectSlider";
@@ -21,6 +22,24 @@ const formattedServices = services.map((s) => ({
   description: s.data.description,
   slug: s.slug,
 }));
+
+// Fetch and optimize projects
+const allProjects = await getCollection("projects");
+const projectsWithOptimizedImages = await Promise.all(
+  allProjects.map(async (project) => {
+    const optimizedImage = await getImage({
+      src: project.data.image,
+      format: "webp",
+    });
+    return {
+      title: project.data.title,
+      description: project.data.description,
+      location: project.data.location,
+      image: optimizedImage.src,
+      slug: project.slug,
+    };
+  }),
+);
 
 const areas = await getCollection("areas");
 
@@ -244,7 +263,7 @@ const testimonials = [
         </a>
       </div>
 
-      <ProjectSlider client:load />
+      <ProjectSlider projects={projectsWithOptimizedImages} client:load />
     </div>
   </section>
 

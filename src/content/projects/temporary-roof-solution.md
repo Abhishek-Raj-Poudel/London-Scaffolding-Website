@@ -2,7 +2,19 @@
 title: "Temporary Roof Solution"
 description: "Full weather protection for a residential block during roof replacement."
 location: "Croydon"
-image: "../../assets/london-areas.png"
+image: "../../assets/Scaffolding4.jpeg"
+gallery:
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
+faqs:
+  - question: "Is the temporary roof 100% waterproof?"
+    answer: "Yes, our temporary roofing systems are designed to provide complete weather protection, ensuring the interior remains dry throughout the project."
+  - question: "What wind speeds can it withstand?"
+    answer: "Our systems are structurally engineered to withstand high wind loads and are regularly inspected for safety compliance."
 ---
 
 ## Project Overview

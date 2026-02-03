@@ -2,7 +2,19 @@
 title: "Period Property Restoration"
 description: "Delicate access solutions for the restoration of a Grade II listed townhouse."
 location: "Kensington"
-image: "../../assets/london-areas.png"
+image: "../../assets/Scaffolding2.jpeg"
+gallery:
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
+faqs:
+  - question: "How do you protect the historic facade?"
+    answer: "We use specialized padding and non-marking ties to ensure no damage occurs to the Grade II listed masonry or architectural details."
+  - question: "Are your scaffolders trained for historic buildings?"
+    answer: "Yes, our team has extensive experience working on heritage sites and follows strict protocols for period property restoration."
 ---
 
 ## Project Overview

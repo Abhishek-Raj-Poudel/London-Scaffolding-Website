@@ -1,9 +1,15 @@
 ---
 import "../styles/global.css";
+import { getImage } from "astro:assets";
+import logo from "@/assets/logo.png";
 import { Navbar } from "../components/Navbar";
 import Footer from "../components/Footer.astro";
 import SEOHead from "../components/SEOHead.astro";
+
 const { content } = Astro.props;
+
+// Optimize logo at build time
+const optimizedLogo = await getImage({ src: logo, format: "webp" });
 ---
 
 <html lang="en">
@@ -17,7 +23,7 @@ const { content } = Astro.props;
     />
   </head>
   <body>
-    <Navbar client:load />
+    <Navbar logoUrl={optimizedLogo.src} client:load />
     <main>
       <slot />
     </main>
