@@ -339,7 +339,7 @@ export function QuoteForm() {
           <Button
             type="submit"
             size="lg"
-            className="w-full h-14 text-lg font-bold rounded-xl shadow-lg hover:shadow-primary/25 transition-all"
+            className="w-full h-14 rounded-full font-bold typo-base text-white transition-all shadow-lg flex items-center justify-center gap-2 group "
             disabled={isSubmitting}
           >
             {isSubmitting ? (

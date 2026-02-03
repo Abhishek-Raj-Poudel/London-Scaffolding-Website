@@ -152,7 +152,7 @@ export const CTA = ({
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl text-foreground">
+          <div className="bg-white rounded-3xl p-8 lg:p-10 text-foreground">
             <h3 className="typo-2xl font-bold mb-2">Request a Quote</h3>
             <p className="text-muted-foreground mb-8 typo-base">
               Fill out the form below and we'll get back to you within 24 hours.
@@ -358,11 +358,7 @@ export const CTA = ({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full h-14 rounded-full font-bold typo-base transition-all shadow-lg flex items-center justify-center gap-2 group ${
-                  isSuccess
-                    ? "bg-green-600 hover:bg-green-700 shadow-green-200"
-                    : "bg-primary hover:bg-primary/90 shadow-primary/20"
-                }`}
+                className={`w-full h-14 rounded-full font-bold typo-base text-white transition-all shadow-lg flex items-center justify-center gap-2 group `}
               >
                 {isSubmitting ? (
                   "Sending..."
