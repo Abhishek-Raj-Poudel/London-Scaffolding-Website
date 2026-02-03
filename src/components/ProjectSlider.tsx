@@ -8,8 +8,12 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-scaffolding.png";
-import areasImage from "@/assets/london-areas.png";
+import Scaffolding1 from "@/assets/Scaffolding1.jpeg";
+import Scaffolding2 from "@/assets/Scaffolding2.jpeg";
+import Scaffolding3 from "@/assets/scaffolding3.jpeg";
+import Scaffolding4 from "@/assets/Scaffolding4.jpeg";
+import Scaffolding5 from "@/assets/Scaffolding5.jpeg";
+import Scaffolding6 from "@/assets/Scaffolding6.jpeg";
 
 const projects = [
   {
@@ -17,28 +21,42 @@ const projects = [
     description:
       "Multi-story complex scaffolding for a major office redevelopment in the City.",
     location: "City of London",
-    image: heroImage.src,
+    image: Scaffolding1.src,
   },
   {
     title: "Period Property Restoration",
     description:
       "Delicate access solutions for the restoration of a Grade II listed townhouse.",
     location: "Kensington",
-    image: areasImage.src,
+    image: Scaffolding2.src,
   },
   {
     title: "Industrial Loading Bays",
     description:
       "Heavy-duty loading bay construction for a logistics facility expansion.",
     location: "Barking",
-    image: heroImage.src,
+    image: Scaffolding3.src,
   },
   {
     title: "Temporary Roof Solution",
     description:
       "Full weather protection for a residential block during roof replacement.",
     location: "Croydon",
-    image: areasImage.src,
+    image: Scaffolding4.src,
+  },
+  {
+    title: "Domestic Scaffold Hire",
+    description:
+      "Safe and secure access for a large residential renovation project.",
+    location: "Wandsworth",
+    image: Scaffolding5.src,
+  },
+  {
+    title: "High-Rise Access",
+    description:
+      "Complex scaffolding for high-rise window replacement and facade repairs.",
+    location: "Canary Wharf",
+    image: Scaffolding6.src,
   },
 ];
 

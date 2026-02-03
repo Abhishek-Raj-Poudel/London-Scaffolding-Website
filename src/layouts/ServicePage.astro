@@ -19,13 +19,29 @@ interface Props {
   areas?: { title: string; slug: string }[];
 }
 
+import Scaffolding1 from "@/assets/Scaffolding1.jpeg";
+import Scaffolding2 from "@/assets/Scaffolding2.jpeg";
+import Scaffolding3 from "@/assets/scaffolding3.jpeg";
+import Scaffolding4 from "@/assets/Scaffolding4.jpeg";
+import Scaffolding5 from "@/assets/Scaffolding5.jpeg";
+import Scaffolding6 from "@/assets/Scaffolding6.jpeg";
+
 const { content } = Astro.props;
 
-// Prepare gallery images if they exist
-const galleryImages = content.gallery?.map((img: any) => ({
-  src: img.src,
-  alt: `${content.title} Project`,
-}));
+// Prepare gallery images if they exist, otherwise use all 6 scaffolding images
+const galleryImages = content.gallery?.length
+  ? content.gallery.map((img: any) => ({
+      src: img.src,
+      alt: `${content.title} Project`,
+    }))
+  : [
+      { src: Scaffolding1.src, alt: "Professional Scaffolding Project 1" },
+      { src: Scaffolding2.src, alt: "Professional Scaffolding Project 2" },
+      { src: Scaffolding3.src, alt: "Professional Scaffolding Project 3" },
+      { src: Scaffolding4.src, alt: "Professional Scaffolding Project 4" },
+      { src: Scaffolding5.src, alt: "Professional Scaffolding Project 5" },
+      { src: Scaffolding6.src, alt: "Professional Scaffolding Project 6" },
+    ];
 
 // We need to parse headings from Markdown content if we want them dynamic,
 // but since we render <slot />, passing headings is tricky without the page component helping.
@@ -34,6 +50,14 @@ const galleryImages = content.gallery?.map((img: any) => ({
 // Actually, let's make a static sidebar navigation for the major sections of the page.
 
 import { GalleryMasonry } from "@/components/GalleryMasonry";
+import { ServiceTabs } from "@/components/ServiceTabs";
+
+const tabs = [
+  { id: "overview", label: "Overview" },
+  { id: "gallery", label: "Project Gallery" },
+  ...(content.faqs ? [{ id: "faq", label: "FAQs" }] : []),
+  { id: "quote", label: "Get a Quote" },
+];
 
 const schema = {
   "@context": "https://schema.org",
@@ -96,51 +120,25 @@ const schema = {
     </div>
   </section>
 
+  <ServiceTabs tabs={tabs} client:idle />
+
   {/* Main Content */}
-  <section class="py-20">
+  <section class="">
     <div class="wrapper grid grid-cols-1 lg:grid-cols-3 gap-12">
       <div class="lg:col-span-2 prose prose-slate max-w-none">
-        <div class="space-y-8">
+        <div id="overview" class="space-y-8 scroll-mt-32">
           <slot />
         </div>
 
         {/* Gallery Section */}
-        <div id="gallery" class="pt-16 scroll-mt-24">
+        <div id="gallery" class="pt-16 scroll-mt-32">
           <h2 class="typo-3xl mb-8">Recent Projects Gallery</h2>
           <GalleryMasonry images={galleryImages} client:load />
         </div>
       </div>
 
       {/* Sidebar / Table of Contents */}
-      <aside class="space-y-8 h-fit sticky top-24">
-        <div class="bg-muted/30 p-8 rounded-2xl">
-          <h3 class="typo-xl font-bold mb-4">Table of Contents</h3>
-          <ul class="space-y-3">
-            <li
-              class="text-sm text-slate-700 font-medium hover:text-primary transition-colors"
-            >
-              <a href="#overview">Overview</a>
-            </li>
-            {
-              content.faqs && (
-                <li class="text-sm text-slate-700 font-medium hover:text-primary transition-colors">
-                  <a href="#faq">Frequently Asked Questions</a>
-                </li>
-              )
-            }
-            <li
-              class="text-sm text-slate-700 font-medium hover:text-primary transition-colors"
-            >
-              <a href="#gallery">Project Gallery</a>
-            </li>
-            <li
-              class="text-sm text-slate-700 font-medium hover:text-primary transition-colors"
-            >
-              <a href="#quote">Get a Quote</a>
-            </li>
-          </ul>
-        </div>
-
+      <aside class="space-y-8 h-fit sticky top-32">
         {/* Areas We Cover */}
         <div class="bg-white border-2 border-slate-100 p-8 rounded-2xl">
           <h3 class="typo-xl font-bold mb-4">Areas We Cover</h3>

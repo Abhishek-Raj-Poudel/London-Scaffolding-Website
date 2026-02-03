@@ -14,7 +14,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-scaffolding.png";
+import Scaffolding1 from "@/assets/Scaffolding1.jpeg";
+import Scaffolding2 from "@/assets/Scaffolding2.jpeg";
+import Scaffolding4 from "@/assets/Scaffolding4.jpeg";
+
+const fallbacks = [Scaffolding1.src, Scaffolding2.src, Scaffolding4.src];
 
 interface Service {
   title: string;
@@ -63,7 +67,7 @@ export function ServiceCarousel({ services }: ServiceCarouselProps) {
                   </CardContent>
                   <CardFooter className="pb-6 mt-8 overflow-hidden rounded-b-3xl">
                     <img
-                      src={service.image || heroImage.src}
+                      src={service.image || fallbacks[index % fallbacks.length]}
                       alt={service.title}
                       className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 rounded-md"
                     />
