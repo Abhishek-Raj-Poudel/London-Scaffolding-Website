@@ -167,7 +167,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
               src={logoUrl}
               alt="Logo"
               className={cn("h-10", isScrolled ? "" : "brightness-0 invert")}
-              loading="lazy"
+              loading="eager"
             />
           </a>
         </div>
@@ -189,7 +189,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <ul className="grid w-100 gap-3 p-4 md:w-125 md:grid-cols-2 lg:w-150">
                     {services.map((service) => (
                       <ListItem
                         key={service.title}

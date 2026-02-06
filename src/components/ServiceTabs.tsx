@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface Tab {
@@ -8,7 +8,6 @@ interface Tab {
 
 export const ServiceTabs = ({ tabs }: { tabs: Tab[] }) => {
   const [activeTab, setActiveTab] = useState<string>(tabs[0]?.id || "");
-  const [isSticky, setIsSticky] = useState(false);
 
   // Handle scroll to section
   const scrollToSection = (id: string) => {
@@ -31,12 +30,6 @@ export const ServiceTabs = ({ tabs }: { tabs: Tab[] }) => {
   // Handle active tab highlighting on scroll
   useEffect(() => {
     const handleScroll = () => {
-      // Check if tabs are sticky (optional styling)
-      const tabsElement = document.getElementById("service-tabs");
-      if (tabsElement) {
-        setIsSticky(window.scrollY > tabsElement.offsetTop - 100);
-      }
-
       // Find active section
       const scrollPosition = window.scrollY + 200; // Offset for better detection
 
@@ -61,7 +54,7 @@ export const ServiceTabs = ({ tabs }: { tabs: Tab[] }) => {
   return (
     <div
       id="service-tabs"
-      className="sticky top-[58px] z-40 bg-white border-b border-gray-200 transition-all duration-300"
+      className="sticky top-14.5 z-40 bg-white border-b border-gray-200 transition-all duration-300"
     >
       <div className="container mx-auto px-4 sm:px-8">
         <div className="flex items-center justify-center gap-8 overflow-x-auto no-scrollbar">
