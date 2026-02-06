@@ -147,10 +147,10 @@ export function Navbar({ logoUrl }: NavbarProps) {
   return (
     <div
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300 border-b",
+        "fixed w-full top-0 z-50 transition-all duration-300 border-b",
         isScrolled
-          ? "bg-white border-slate-200 py-2 "
-          : "bg-primary border-primary/10 py-4",
+          ? "bg-white border-slate-200 py-2 shadow-sm"
+          : "bg-transparent border-transparent py-4",
       )}
     >
       <div className="container mx-auto flex items-center justify-between px-4">

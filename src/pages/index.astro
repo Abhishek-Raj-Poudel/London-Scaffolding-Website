@@ -10,9 +10,15 @@ import { CTA } from "@/components/CTA";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Image } from "astro:assets";
-import heroImage from "@/assets/Scaffolding1.jpeg";
 import heroRightImage from "@/assets/hero.jpeg";
 import areasImage from "@/assets/Scaffolding6.jpeg";
+
+const stats = [
+  { value: "500+", label: "Projects Completed" },
+  { value: "50+", label: "Expert Team Members" },
+  { value: "15+", label: "Years Experience" },
+  { value: "24/7", label: "Support Available" },
+];
 
 const services = await getCollection("services");
 const formattedServices = services.map((s) => ({
@@ -75,11 +81,18 @@ const testimonials = [
 >
   {/* Hero Section */}
   <section
-    class="bg-primary text-white pt-20 border-b border-white/10 overflow-visible"
+    class="bg-primary text-white min-h-screen flex flex-col justify-center border-b border-white/10 relative overflow-hidden"
   >
-    <div class="relative wrapper">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="flex flex-col gap-6">
+    <div class="absolute inset-0 opacity-10">
+      <img
+        src={heroRightImage.src}
+        alt="Scaffolding structure"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="wrapper relative z-10 py-20">
+      <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-6 items-start text-left max-w-5xl">
           <h1 class="typo-5xl leading-tight">
             Professional Scaffolding Company in London
           </h1>
@@ -104,45 +117,33 @@ const testimonials = [
           </div>
         </div>
 
-        <div class="relative hidden lg:block group">
-          <div
-            class="absolute -inset-4 bg-white/5 rounded-[2.5rem] blur-2xl group-hover:bg-white/10 transition-colors duration-500"
-          >
-          </div>
-          <div
-            class="relative rounded-3xl overflow-hidden border-2 border-white/10 rotate-2 group-hover:rotate-0 transition-all duration-300"
-          >
-            <Image
-              src={heroRightImage}
-              alt="Scaffolding Project"
-              class="w-full h-125 object-cover"
-              loading="eager"
-            />
-          </div>
+        {/* Stats Grid below CTA */}
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 w-full max-w-4xl border-t border-white/10 pt-12"
+        >
+          {
+            stats.map((stat, index) => (
+              <div
+                class:list={[
+                  "flex flex-col gap-1",
+                  index !== 0 && "md:pl-8 md:border-l border-white/10",
+                ]}
+              >
+                <span class="typo-4xl font-normal">{stat.value}</span>
+                <span class="typo-base text-white/80 uppercase tracking-wider">
+                  {stat.label}
+                </span>
+              </div>
+            ))
+          }
         </div>
-      </div>
-
-      <div class="mt-20 -mb-16">
-        <TrustBar client:load />
-      </div>
-
-      <div
-        class="mt-16 -mb-80 rounded-b-3xl overflow-hidden border-white/10 w-full relative h-100 lg:h-150"
-      >
-        <Image
-          src={heroImage}
-          alt="Scaffolding Company in London"
-          class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          loading="eager"
-          fetchpriority="high"
-        />
       </div>
     </div>
   </section>
 
   {/* Services Section */}
-  <section class="pt-96 pb-20 overflow-x-hidden bg-background">
-    <div class="wrapper">
+  <section class="overflow-x-hidden bg-white">
+    <div class="wrapper py-24">
       <div class="max-w-4xl flex flex-col gap-6 mb-12">
         <h2 class="typo-4xl">Comprehensive Scaffolding Services</h2>
         <p class="typo-xl text-muted-foreground leading-relaxed">
@@ -157,8 +158,8 @@ const testimonials = [
   </section>
 
   {/* Areas We Cover Section */}
-  <section class="py-24 bg-muted/30">
-    <div class="wrapper">
+  <section class="bg-neutral-50">
+    <div class="wrapper py-24">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         {/* Left Image */}
         <div class="rounded-3xl overflow-hidden sticky top-24">
