@@ -25,6 +25,11 @@ import Scaffolding3 from "@/assets/scaffolding3.jpeg";
 import Scaffolding4 from "@/assets/Scaffolding4.jpeg";
 import Scaffolding5 from "@/assets/Scaffolding5.jpeg";
 import Scaffolding6 from "@/assets/Scaffolding6.jpeg";
+import Image109 from "@/assets/109.jpeg";
+import Image110 from "@/assets/110.jpeg";
+import Image111 from "@/assets/111.jpeg";
+import Image112 from "@/assets/112.jpeg";
+import Image113 from "@/assets/113.jpeg";
 
 const { content } = Astro.props;
 
@@ -35,6 +40,11 @@ const galleryImages = content.gallery?.length
       alt: `${content.title} Project`,
     }))
   : [
+      { src: Image109.src, alt: "Professional Scaffolding Project - 109" },
+      { src: Image110.src, alt: "Professional Scaffolding Project - 110" },
+      { src: Image111.src, alt: "Professional Scaffolding Project - 111" },
+      { src: Image112.src, alt: "Professional Scaffolding Project - 112" },
+      { src: Image113.src, alt: "Professional Scaffolding Project - 113" },
       { src: Scaffolding1.src, alt: "Professional Scaffolding Project 1" },
       { src: Scaffolding2.src, alt: "Professional Scaffolding Project 2" },
       { src: Scaffolding3.src, alt: "Professional Scaffolding Project 3" },
