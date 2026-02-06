@@ -129,6 +129,13 @@ const navLinks = [
   { title: "Contact", href: "/contact" },
 ];
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 interface NavbarProps {
   logoUrl: string;
 }
@@ -340,49 +347,65 @@ export function Navbar({ logoUrl }: NavbarProps) {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-                <SheetHeader className="text-left border-b pb-6 mb-6">
-                  <SheetTitle className="text-2xl font-bold tracking-tighter text-primary">
-                    LONDON SCAFFOLDING
-                  </SheetTitle>
+              <SheetContent
+                side="right"
+                className="w-[300px] sm:w-[400px] px-8"
+              >
+                <SheetHeader className="text-left border-b pb-6 ">
+                  <div className="shrink-0">
+                    <img
+                      src={logoUrl}
+                      alt="Logo"
+                      className="h-10"
+                      loading="eager"
+                    />
+                  </div>
                 </SheetHeader>
-                <div className="flex flex-col gap-6 overflow-y-auto max-h-[calc(100vh-180px)] pr-2">
-                  {navLinks.map((link) => (
-                    <div key={link.title} className="flex flex-col gap-3">
-                      <a
-                        href={link.href}
-                        className="text-lg font-bold hover:text-primary transition-colors flex items-center justify-between"
+                <div className="flex flex-col gap-6 overflow-y-auto max-h-[calc(100vh-220px)] pr-2">
+                  <Accordion type="single" collapsible className="w-full">
+                    {navLinks.map((link) => (
+                      <AccordionItem
+                        key={link.title}
+                        value={link.title}
+                        className="border-none"
                       >
-                        {link.title}
-                      </a>
-                      {link.subItems && (
-                        <div className="flex flex-col gap-2 pl-4 border-l-2 border-slate-100">
-                          {link.subItems.slice(0, 5).map((sub) => (
-                            <a
-                              key={sub.title}
-                              href={sub.href}
-                              className="text-sm text-slate-600 hover:text-primary transition-colors"
-                            >
-                              {sub.title}
-                            </a>
-                          ))}
-                          {link.subItems.length > 5 && (
+                        {link.subItems ? (
+                          <>
+                            <AccordionTrigger className="text-lg py-3 hover:text-primary hover:no-underline">
+                              {link.title}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <div className="flex flex-col gap-2 pl-4 border-l-2 border-slate-100 py-2">
+                                {link.subItems.map((sub) => (
+                                  <a
+                                    key={sub.title}
+                                    href={sub.href}
+                                    className="text-sm py-2 text-slate-600 hover:text-primary transition-colors"
+                                  >
+                                    {sub.title}
+                                  </a>
+                                ))}
+                              </div>
+                            </AccordionContent>
+                          </>
+                        ) : (
+                          <div className="py-3">
                             <a
                               href={link.href}
-                              className="text-sm font-semibold text-primary"
+                              className="text-lg hover:text-primary transition-colors block"
                             >
-                              View All →
+                              {link.title}
                             </a>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                          </div>
+                        )}
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
                 </div>
-                <div className="mt-auto pt-8 border-t">
+                <div className=" pt-8 border-t pb-10">
                   <Button
                     asChild
-                    className="w-full rounded-xl py-6 text-lg font-bold"
+                    className="bg-transparent w-full rounded-full py-6 text-lg  hover:scale-[1.02] transition-transform border border-primary text-primary hover:bg-primary hover:text-white"
                   >
                     <a href="/quote">Request a Free Quote</a>
                   </Button>

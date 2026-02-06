@@ -10,6 +10,18 @@ faqs:
     answer: "Yes, all our loading bays feature up-and-over safety gates or removable rails to ensure workers are protected while the bay is being loaded."
   - question: "Can you design a custom loading bay for a tight space?"
     answer: "Absolutely. We specialize in designing bespoke loading solutions for restricted urban sites in London."
+gallery:
+  - "../../assets/109.jpeg"
+  - "../../assets/110.jpeg"
+  - "../../assets/111.jpeg"
+  - "../../assets/112.jpeg"
+  - "../../assets/113.jpeg"
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
 ---
 
 ## Efficient Material Handling with Scaffolding Loading Bays

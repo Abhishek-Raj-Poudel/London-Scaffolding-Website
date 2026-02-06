@@ -19,39 +19,13 @@ interface Props {
   areas?: { title: string; slug: string }[];
 }
 
-import Scaffolding1 from "@/assets/Scaffolding1.jpeg";
-import Scaffolding2 from "@/assets/Scaffolding2.jpeg";
-import Scaffolding3 from "@/assets/scaffolding3.jpeg";
-import Scaffolding4 from "@/assets/Scaffolding4.jpeg";
-import Scaffolding5 from "@/assets/Scaffolding5.jpeg";
-import Scaffolding6 from "@/assets/Scaffolding6.jpeg";
-import Image109 from "@/assets/109.jpeg";
-import Image110 from "@/assets/110.jpeg";
-import Image111 from "@/assets/111.jpeg";
-import Image112 from "@/assets/112.jpeg";
-import Image113 from "@/assets/113.jpeg";
-
 const { content } = Astro.props;
 
-// Prepare gallery images if they exist, otherwise use all 6 scaffolding images
-const galleryImages = content.gallery?.length
-  ? content.gallery.map((img: any) => ({
-      src: img.src,
-      alt: `${content.title} Project`,
-    }))
-  : [
-      { src: Image109.src, alt: "Professional Scaffolding Project - 109" },
-      { src: Image110.src, alt: "Professional Scaffolding Project - 110" },
-      { src: Image111.src, alt: "Professional Scaffolding Project - 111" },
-      { src: Image112.src, alt: "Professional Scaffolding Project - 112" },
-      { src: Image113.src, alt: "Professional Scaffolding Project - 113" },
-      { src: Scaffolding1.src, alt: "Professional Scaffolding Project 1" },
-      { src: Scaffolding2.src, alt: "Professional Scaffolding Project 2" },
-      { src: Scaffolding3.src, alt: "Professional Scaffolding Project 3" },
-      { src: Scaffolding4.src, alt: "Professional Scaffolding Project 4" },
-      { src: Scaffolding5.src, alt: "Professional Scaffolding Project 5" },
-      { src: Scaffolding6.src, alt: "Professional Scaffolding Project 6" },
-    ];
+// Prepare gallery images from markdown frontmatter
+const galleryImages = (content.gallery || []).map((img: any) => ({
+  src: img.src,
+  alt: `${content.title} Project`,
+}));
 
 // We need to parse headings from Markdown content if we want them dynamic,
 // but since we render <slot />, passing headings is tricky without the page component helping.

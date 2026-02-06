@@ -10,6 +10,18 @@ faqs:
     answer: "Yes, our temporary roofs are engineered to withstand high wind loads and are securely anchored to the supporting scaffolding structure."
   - question: "Can a temporary roof cover a large area?"
     answer: "Yes, our modular systems can span large distances, making them suitable for both residential homes and large commercial units."
+gallery:
+  - "../../assets/109.jpeg"
+  - "../../assets/110.jpeg"
+  - "../../assets/111.jpeg"
+  - "../../assets/112.jpeg"
+  - "../../assets/113.jpeg"
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
 ---
 
 ## All-Weather Protection with Temporary Roof Scaffolding

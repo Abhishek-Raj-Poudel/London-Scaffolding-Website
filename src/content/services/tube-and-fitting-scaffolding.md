@@ -10,6 +10,18 @@ faqs:
     answer: "Tube and fitting is best for irregularly shaped buildings, tight spaces, or projects requiring specific height adjustments that pre-fabricated systems can't match."
   - question: "Is tube and fitting scaffolding safe?"
     answer: "When installed by CISRS-qualified professionals like our team, it is extremely safe and remains the industry standard for many complex projects."
+gallery:
+  - "../../assets/109.jpeg"
+  - "../../assets/110.jpeg"
+  - "../../assets/111.jpeg"
+  - "../../assets/112.jpeg"
+  - "../../assets/113.jpeg"
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
 ---
 
 ## Traditional Tube and Fitting Scaffolding Excellence

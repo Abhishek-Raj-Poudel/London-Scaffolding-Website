@@ -10,6 +10,18 @@ faqs:
     answer: "Yes, we operate a 24/7 emergency hotline to ensure that dangerous structures can be secured at any time of the day or night."
   - question: "Can you provide scaffolding for fire-damaged buildings?"
     answer: "Yes, we specialize in provide stabilization and access for fire-damaged structures, working closely with emergency services and structural engineers."
+gallery:
+  - "../../assets/109.jpeg"
+  - "../../assets/110.jpeg"
+  - "../../assets/111.jpeg"
+  - "../../assets/112.jpeg"
+  - "../../assets/113.jpeg"
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
 ---
 
 ## 24/7 Emergency Scaffolding and Structural Stabilization in London

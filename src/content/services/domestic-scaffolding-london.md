@@ -10,6 +10,18 @@ faqs:
     answer: "Yes, if the scaffolding is placed on a public pavement or road, a local council permit is required. We handle all permit applications for our clients."
   - question: "How long does it take to set up scaffolding for a house?"
     answer: "For most standard residential projects, setup can be completed within 1 to 2 days, depending on access and complexity."
+gallery:
+  - "../../assets/109.jpeg"
+  - "../../assets/110.jpeg"
+  - "../../assets/111.jpeg"
+  - "../../assets/112.jpeg"
+  - "../../assets/113.jpeg"
+  - "../../assets/Scaffolding1.jpeg"
+  - "../../assets/Scaffolding2.jpeg"
+  - "../../assets/scaffolding3.jpeg"
+  - "../../assets/Scaffolding4.jpeg"
+  - "../../assets/Scaffolding5.jpeg"
+  - "../../assets/Scaffolding6.jpeg"
 ---
 
 ## Safe and Reliable Residential Scaffolding in London
