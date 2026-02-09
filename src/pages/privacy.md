@@ -50,4 +50,4 @@ Under the UK General Data Protection Regulation (UK GDPR), you have the right to
 
 If you have any questions about this Privacy Policy or our data practices, please contact us at:
 **Email:** hello@london-scaffolding.co.uk
-**Phone:** 020 8XXX XXXX
+**Phone:** 020 7060 4460

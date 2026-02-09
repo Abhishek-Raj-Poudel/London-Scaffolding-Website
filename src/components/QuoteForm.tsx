@@ -177,7 +177,7 @@ export function QuoteForm() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="020 XXXX XXXX"
+                  placeholder="020 7060 4460"
                   value={formData.phone}
                   onChange={(e) => handleChange("phone", e.target.value)}
                   className={`h-12 md:h-14 text-base rounded-xl ${errors.phone ? "border-red-500" : ""}`}

@@ -32,7 +32,7 @@ export const CTA = ({
   title = "Ready to start your project?",
   description = "Contact us today for a free, no-obligation scaffolding quote in London.",
   buttonText = "Get a Free Quote",
-  phoneText = "020 8XXX XXXX",
+  phoneText = "020 7060 4460",
   id,
 }: CTAProps) => {
   const [formData, setFormData] = React.useState({
@@ -206,7 +206,7 @@ export const CTA = ({
                   <Input
                     id="phone"
                     required
-                    placeholder="020 XXXX XXXX"
+                    placeholder="020 7060 4460"
                     value={formData.phone}
                     onChange={(e) => handleChange("phone", e.target.value)}
                     className={`h-12 rounded-xl border-slate-200 focus:border-primary focus:ring-primary/20 ${errors.phone ? "border-red-500" : ""}`}

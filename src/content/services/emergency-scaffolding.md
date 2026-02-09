@@ -13,17 +13,6 @@ faqs:
 gallery:
   - "../../assets/Emergency-Scaffolding-London.jpg.jpeg"
   - "../../assets/Emergency-Scaffolding-London-2.jpg.jpeg"
-  - "../../assets/109.jpeg"
-  - "../../assets/110.jpeg"
-  - "../../assets/111.jpeg"
-  - "../../assets/112.jpeg"
-  - "../../assets/113.jpeg"
-  - "../../assets/Scaffolding1.jpeg"
-  - "../../assets/Scaffolding2.jpeg"
-  - "../../assets/scaffolding3.jpeg"
-  - "../../assets/Scaffolding4.jpeg"
-  - "../../assets/Scaffolding5.jpeg"
-  - "../../assets/Scaffolding6.jpeg"
 ---
 
 ## 24/7 Emergency Scaffolding and Structural Stabilization in London

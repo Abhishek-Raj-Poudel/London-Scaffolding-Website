@@ -17,7 +17,7 @@ const services = defineCollection({
       title: z.string().default('Ready to start your project?'),
       description: z.string().default('Contact us today for a free, no-obligation scaffolding quote in London.'),
       buttonText: z.string().default('Get a Free Quote'),
-      phoneText: z.string().default('020 XXXX XXXX'),
+      phoneText: z.string().default('020 7060 4460'),
     }).optional(),
   }),
 });
@@ -37,7 +37,7 @@ const areas = defineCollection({
       title: z.string().default('Need scaffolding near you?'),
       description: z.string().default('We provide professional scaffolding services across London and the surrounding areas.'),
       buttonText: z.string().default('Get a Free Quote'),
-      phoneText: z.string().default('020 XXXX XXXX'),
+      phoneText: z.string().default('020 7060 4460'),
     }).optional(),
     mapEmbedUrl: z.string().optional(),
   }),
@@ -61,7 +61,7 @@ const projects = defineCollection({
       title: z.string().default('Ready to start your project?'),
       description: z.string().default('Contact us today for a free, no-obligation scaffolding quote in London.'),
       buttonText: z.string().default('Get a Free Quote'),
-      phoneText: z.string().default('020 XXXX XXXX'),
+      phoneText: z.string().default('020 7060 4460'),
     }).optional(),
   }),
 });

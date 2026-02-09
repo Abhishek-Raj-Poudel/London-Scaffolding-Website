@@ -162,7 +162,7 @@ export function ContactForm() {
                 id="phone"
                 name="phone"
                 type="tel"
-                placeholder="020 XXXX XXXX"
+                placeholder="020 7060 4460"
                 value={formData.phone}
                 onChange={(e) => handleChange("phone", e.target.value)}
                 className={errors.phone ? "border-red-500" : ""}
