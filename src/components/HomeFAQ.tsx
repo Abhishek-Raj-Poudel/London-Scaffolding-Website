@@ -33,7 +33,7 @@ export function HomeFAQ() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       {/* Left side: Info */}
-      <div className="space-y-8 sticky top-32">
+      <div className="space-y-8 lg:sticky lg:top-32">
         <div className="space-y-6">
           <h2 className="typo-4xl leading-tight">
             Commonly Asked <br /> Questions & Answers

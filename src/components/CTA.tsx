@@ -120,7 +120,7 @@ export const CTA = ({
       <div className="wrapper">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Column: Text Content */}
-          <div className="flex flex-col gap-8 sticky top-8">
+          <div className="flex flex-col gap-8 lg:sticky lg:top-8">
             <div className="flex flex-col gap-6">
               <h2 className="typo-4xl leading-tight">{title}</h2>
               <p className="typo-xl text-white/90 leading-relaxed max-w-xl">
