@@ -25,8 +25,21 @@ const readTime = Math.ceil(wordCount / 200);
   }}
 >
   <!-- Hero Section -->
-  <section class="bg-primary text-white py-20 border-b border-white/10">
-    <div class="wrapper">
+  <section
+    class="bg-primary text-white py-20 border-b border-white/10 relative overflow-hidden"
+  >
+    {
+      post.data.image && (
+        <div class="absolute inset-0 opacity-20">
+          <img
+            src={post.data.image.src}
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )
+    }
+    <div class="wrapper relative z-10">
       <div class="max-w-4xl flex flex-col gap-6">
         <div class="text-white/60 text-sm font-bold uppercase tracking-widest">
           {
@@ -85,7 +98,7 @@ const readTime = Math.ceil(wordCount / 200);
   </div>
 
   <!-- Main Content -->
-  <section class="py-20">
+  <section class="">
     <div class="wrapper grid grid-cols-1 lg:grid-cols-3 gap-12">
       <div class="lg:col-span-2 prose prose-slate max-w-none">
         <Content />
