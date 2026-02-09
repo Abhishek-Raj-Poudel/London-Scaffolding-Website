@@ -11,6 +11,8 @@ faqs:
   - question: "Can you design a custom loading bay for a tight space?"
     answer: "Absolutely. We specialize in designing bespoke loading solutions for restricted urban sites in London."
 gallery:
+  - "../../assets/Scaffolding-Loading-Bays.jpg.jpeg"
+  - "../../assets/Scaffolding-Loading-Bays-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

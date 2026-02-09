@@ -11,6 +11,8 @@ faqs:
   - question: "Can edge protection be installed on different roof types?"
     answer: "Yes, we have systems designed for flat roofs, pitched roofs, and various structural substrates like concrete, steel, and timber."
 gallery:
+  - "../../assets/Edge-Protection.jpg.jpeg"
+  - "../../assets/Edge-Protection-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

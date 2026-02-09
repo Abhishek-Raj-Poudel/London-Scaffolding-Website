@@ -11,6 +11,8 @@ faqs:
   - question: "Can a temporary roof cover a large area?"
     answer: "Yes, our modular systems can span large distances, making them suitable for both residential homes and large commercial units."
 gallery:
+  - "../../assets/Temporary-Roof-Scaffolding.jpg.jpeg"
+  - "../../assets/Temporary-Roof-Scaffolding-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

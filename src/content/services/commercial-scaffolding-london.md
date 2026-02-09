@@ -11,6 +11,8 @@ faqs:
   - question: "Can you provide scaffolding during out-of-office hours?"
     answer: "Yes, we offer flexible scheduling to minimize disruption to your business operations, including evening and weekend installations."
 gallery:
+  - "../../assets/Commercial-Scaffolding-London.jpg.jpeg"
+  - "../../assets/Commercial-Scaffolding-London-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

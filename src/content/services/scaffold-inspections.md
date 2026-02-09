@@ -11,6 +11,8 @@ faqs:
   - question: "Can you inspect scaffolding installed by another company?"
     answer: "Yes, we provide independent third-party inspections to ensure unbiased safety assessments for any scaffolding structure."
 gallery:
+  - "../../assets/Scaffold-Inspections.jpg.jpeg"
+  - "../../assets/Scaffold-Inspections-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

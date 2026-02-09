@@ -11,6 +11,7 @@ faqs:
   - question: "Is tube and fitting scaffolding safe?"
     answer: "When installed by CISRS-qualified professionals like our team, it is extremely safe and remains the industry standard for many complex projects."
 gallery:
+  - "../../assets/Tube-and-Fitting-Scaffolding-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

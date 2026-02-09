@@ -11,6 +11,8 @@ faqs:
   - question: "How long does it take to set up scaffolding for a house?"
     answer: "For most standard residential projects, setup can be completed within 1 to 2 days, depending on access and complexity."
 gallery:
+  - "../../assets/Domestic-Scaffolding-London.jpg.jpeg"
+  - "../../assets/Domestic-Scaffolding-London-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"

@@ -11,6 +11,8 @@ faqs:
   - question: "Can you provide scaffolding for fire-damaged buildings?"
     answer: "Yes, we specialize in provide stabilization and access for fire-damaged structures, working closely with emergency services and structural engineers."
 gallery:
+  - "../../assets/Emergency-Scaffolding-London.jpg.jpeg"
+  - "../../assets/Emergency-Scaffolding-London-2.jpg.jpeg"
   - "../../assets/109.jpeg"
   - "../../assets/110.jpeg"
   - "../../assets/111.jpeg"
