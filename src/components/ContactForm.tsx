@@ -21,17 +21,23 @@ import {
 } from "@/components/ui/select";
 
 export function ContactForm() {
+  type Status =
+    | { type: "idle"; msg: "" }
+    | { type: "success"; msg: string }
+    | { type: "error"; msg: string };
+
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
     phone: "",
     serviceType: "",
     message: "",
+    botcheck: false,
   });
 
   const [errors, setErrors] = React.useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitSuccess, setSubmitSuccess] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [status, setStatus] = React.useState<Status>({ type: "idle", msg: "" });
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -69,44 +75,73 @@ export function ContactForm() {
       return;
     }
 
-    setIsSubmitting(true);
+    setLoading(true);
+    setStatus({ type: "idle", msg: "" });
 
     try {
-      const response = await fetch("https://formspree.io/f/xwvqwbel", {
+      const dataToSubmit = new FormData();
+
+      // Add secure access key
+      dataToSubmit.append(
+        "access_key",
+        import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY,
+      );
+      dataToSubmit.append(
+        "subject",
+        "New Contact Message — London Scaffolding Company",
+      );
+      dataToSubmit.append("from_name", "london-scaffolding.com");
+
+      // Add form fields
+      dataToSubmit.append("name", formData.name);
+      dataToSubmit.append("email", formData.email);
+      dataToSubmit.append("phone", formData.phone);
+      dataToSubmit.append("serviceType", formData.serviceType);
+      dataToSubmit.append("message", formData.message);
+
+      // Honeypot
+      if (formData.botcheck) {
+        dataToSubmit.append("botcheck", "true");
+      }
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: dataToSubmit,
       });
 
-      if (response.ok) {
-        setSubmitSuccess(true);
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          msg: "✓ Thank you! Your message has been sent successfully.",
+        });
         setFormData({
           name: "",
           email: "",
           phone: "",
           serviceType: "",
           message: "",
+          botcheck: false,
         });
-        setTimeout(() => setSubmitSuccess(false), 5000);
+        setTimeout(() => setStatus({ type: "idle", msg: "" }), 8000);
       } else {
-        const data = await response.json();
-        setErrors({
-          submit: data.error || "An error occurred. Please try again.",
+        setStatus({
+          type: "error",
+          msg: data.message || "An error occurred. Please try again.",
         });
       }
     } catch (error) {
-      setErrors({
-        submit: "Failed to connect to the server. Please try again.",
+      setStatus({
+        type: "error",
+        msg: "Failed to connect to the server. Please try again.",
       });
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {
@@ -124,6 +159,15 @@ export function ContactForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Honeypot for spam protection */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            checked={formData.botcheck}
+            onChange={(e) => handleChange("botcheck", e.target.checked)}
+            className="hidden"
+            style={{ display: "none" }}
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="name">Full Name *</Label>
@@ -229,17 +273,17 @@ export function ContactForm() {
             )}
           </div>
 
-          {submitSuccess && (
+          {status.type === "success" && (
             <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800 font-medium">
-                ✓ Thank you! Your message has been sent successfully.
-              </p>
+              <p className="text-green-800 font-medium">{status.msg}</p>
             </div>
           )}
 
-          {errors.submit && (
+          {(status.type === "error" || errors.submit) && (
             <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-800 font-medium">{errors.submit}</p>
+              <p className="text-red-800 font-medium">
+                {status.msg || errors.submit}
+              </p>
             </div>
           )}
 
@@ -247,10 +291,14 @@ export function ContactForm() {
             type="submit"
             size="lg"
             className="w-full md:w-auto px-8 py-6 text-lg font-bold rounded-xl"
-            disabled={isSubmitting}
+            disabled={loading}
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {loading ? "Sending..." : "Send Message"}
           </Button>
+
+          <p className="text-xs text-slate-500 mt-4">
+            By submitting, you agree we can contact you about your enquiry.
+          </p>
         </form>
       </CardContent>
     </Card>

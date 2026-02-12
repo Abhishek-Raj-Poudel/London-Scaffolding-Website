@@ -168,7 +168,7 @@ export function QuoteForm() {
   };
 
   return (
-    <Card className="border-0 rounded-3xl overflow-hidden">
+    <Card className="border-0 rounded-3xl overflow-hidden pt-0">
       <CardHeader className="bg-slate-50 border-b p-8">
         <CardTitle className="typo-3xl">Request a Quote</CardTitle>
         <CardDescription className="typo-base mt-2">
@@ -334,7 +334,7 @@ export function QuoteForm() {
                     >
                       <CalendarIcon className="mr-2 h-4 w-4" />
                       {formData.startDate ? (
-                        format(formData.startDate, "PHP")
+                        format(formData.startDate, "PP")
                       ) : (
                         <span>Pick a date</span>
                       )}
@@ -401,7 +401,19 @@ export function QuoteForm() {
               </>
             )}
           </Button>
+
+          <p className="text-xs text-slate-500 text-center mt-4">
+            By submitting, you agree we can contact you about your enquiry.
+          </p>
         </form>
+
+        {/* Small note below form */}
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+          <p className="font-semibold">Need it urgent?</p>
+          <p className="mt-1 text-slate-600">
+            Add “urgent” in your message and we’ll prioritise the callback.
+          </p>
+        </div>
       </CardContent>
     </Card>
   );
