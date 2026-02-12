@@ -53,7 +53,7 @@ export const CTA = ({
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-white rounded-3xl pt-0 mt-0 text-foreground">
+          <div className="bg-white rounded-3xl  text-foreground">
             <QuoteForm />
           </div>
         </div>
