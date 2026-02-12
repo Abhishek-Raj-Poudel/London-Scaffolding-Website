@@ -337,6 +337,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
                 <Button
                   variant="ghost"
                   size="icon"
+                  aria-label="Open navigation menu"
                   className={cn(
                     "transition-colors duration-300 h-10 w-10",
                     isScrolled

@@ -30,6 +30,11 @@ import { Calendar as CalendarIcon, Send, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function QuoteForm() {
+  type Status =
+    | { type: "idle"; msg: "" }
+    | { type: "success"; msg: string }
+    | { type: "error"; msg: string };
+
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -40,11 +45,12 @@ export function QuoteForm() {
     startDate: undefined as Date | undefined,
     address: "",
     details: "",
+    botcheck: false,
   });
 
   const [errors, setErrors] = React.useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitSuccess, setSubmitSuccess] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [status, setStatus] = React.useState<Status>({ type: "idle", msg: "" });
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -72,28 +78,57 @@ export function QuoteForm() {
 
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
+    setLoading(true);
+    setStatus({ type: "idle", msg: "" });
 
     try {
       // Prepare data for submission - formatting date
-      const dataToSubmit = {
-        ...formData,
-        startDate: formData.startDate
-          ? format(formData.startDate, "yyyy-MM-dd")
-          : "",
-      };
+      const dataToSubmit = new FormData();
 
-      const response = await fetch("https://formspree.io/f/xwvqwbel", {
+      // Add secure access key
+      dataToSubmit.append(
+        "access_key",
+        import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY,
+      );
+      dataToSubmit.append(
+        "subject",
+        "New Quote Request — London Scaffolding Company",
+      );
+      dataToSubmit.append("from_name", "london-scaffolding.com");
+
+      // Add form fields
+      dataToSubmit.append("name", formData.name);
+      dataToSubmit.append("email", formData.email);
+      dataToSubmit.append("phone", formData.phone);
+      dataToSubmit.append("projectType", formData.projectType);
+      dataToSubmit.append("serviceType", formData.serviceType);
+      dataToSubmit.append("duration", formData.duration);
+      dataToSubmit.append(
+        "startDate",
+        formData.startDate ? format(formData.startDate, "yyyy-MM-dd") : "",
+      );
+      dataToSubmit.append("address", formData.address);
+      dataToSubmit.append("details", formData.details);
+
+      // Optional: Add botcheck if needed (Web3Forms uses 'botcheck' input name)
+      if (formData.botcheck) {
+        dataToSubmit.append("botcheck", "true");
+      }
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(dataToSubmit),
+        body: dataToSubmit,
       });
 
-      if (response.ok) {
-        setSubmitSuccess(true);
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          msg: "Thanks — your request has been sent. We’ll get back to you shortly with a quote.",
+        });
+
+        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -104,20 +139,24 @@ export function QuoteForm() {
           startDate: undefined,
           address: "",
           details: "",
+          botcheck: false,
         });
-        setTimeout(() => setSubmitSuccess(false), 5000);
+
+        // Reset status after delay
+        setTimeout(() => setStatus({ type: "idle", msg: "" }), 8000);
       } else {
-        const data = await response.json();
-        setErrors({
-          submit: data.error || "An error occurred. Please try again.",
+        setStatus({
+          type: "error",
+          msg: data.message || "Submission failed. Please try again.",
         });
       }
     } catch (error) {
-      setErrors({
-        submit: "Failed to connect to the server. Please try again.",
+      setStatus({
+        type: "error",
+        msg: "Network error. Please check your connection and try again.",
       });
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
@@ -139,6 +178,16 @@ export function QuoteForm() {
       </CardHeader>
       <CardContent className="p-8">
         <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Honeypot for spam protection */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            checked={formData.botcheck}
+            onChange={(e) => handleChange("botcheck", e.target.checked)}
+            className="hidden"
+            style={{ display: "none" }}
+          />
+
           {/* Contact Details Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold border-b pb-2">Contact Details</h3>
@@ -316,23 +365,24 @@ export function QuoteForm() {
             </div>
           </div>
 
-          {submitSuccess && (
+          {status.type === "success" && (
             <div className="p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
               <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                 <Check className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-green-800 font-bold">Quote Request Sent!</p>
-                <p className="text-green-700 text-sm">
-                  We'll review your details and get back to you shortly.
-                </p>
+                <p className="text-green-700 text-sm">{status.msg}</p>
               </div>
             </div>
           )}
 
-          {errors.submit && (
+          {(status.type === "error" || errors.submit) && (
             <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-800 font-medium">{errors.submit}</p>
+              <p className="text-red-800 font-medium pb-1">Error</p>
+              <p className="text-red-700 text-sm">
+                {status.msg || errors.submit}
+              </p>
             </div>
           )}
 
@@ -340,9 +390,9 @@ export function QuoteForm() {
             type="submit"
             size="lg"
             className="w-full h-14 rounded-full font-bold typo-base text-white transition-all flex items-center justify-center gap-2 group "
-            disabled={isSubmitting}
+            disabled={loading}
           >
-            {isSubmitting ? (
+            {loading ? (
               "Submitting Request..."
             ) : (
               <>
